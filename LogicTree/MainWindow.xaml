@@ -1,0 +1,24 @@
+﻿<Window x:Class="LogicTree.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LogicTree"
+        mc:Ignorable="d"
+        Title="LogicTree" Height="450" Width="800" Background="LightGreen" Foreground="White" SizeToContent="WidthAndHeight">
+    <StackPanel>
+        <Label FontWeight="Bold" FontSize="20" Foreground="White">C#. Level 3</Label>
+        <Label>GeekBrains</Label>
+        <Label>C#. Level 3. Titles</Label>
+        <ListBox>
+            <ListBoxItem>Введение в WPF</ListBoxItem>
+            <ListBoxItem>Основы работы</ListBoxItem>
+        </ListBox>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button MinWidth="75" Margin="10">Help</Button>
+            <Button MinWidth="75" Margin="10">0K</Button>
+        </StackPanel>
+        <StatusBar>Moscow, 2020</StatusBar>
+    </StackPanel>
+    
+</Window>

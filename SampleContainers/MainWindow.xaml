@@ -1,0 +1,46 @@
+﻿<Window x:Class="SampleContainers.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SampleContainers"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="800" FontSize="40">
+    <StackPanel>
+        <Label Target="{Binding ElementName=tbUserNameBox}">_UserName</Label>
+        <TextBox x:Name="tbUserNameBox">Text</TextBox>
+        <Button>OK
+            <Button.ToolTip>
+                <ToolTip>
+                    Clicking this will submit your request.
+                </ToolTip>        
+            </Button.ToolTip>
+        </Button>
+        <Button x:Name="btnShowFrame" ToolTip="Clicking this will submit your request." Click="btnShowFrame_Click">OK TOO
+        </Button>
+        <CheckBox>
+            CheckBox
+            <CheckBox.ToolTip>
+                <StackPanel>
+                    <Label FontWeight="Bold" Background="Blue" Foreground="White">
+                        The CheckBox
+                    </Label>
+                    <TextBlock Padding="10" TextWrapping="WrapWithOverflow" Width="200"> CheckBox is a familiar control. But in WPF, it's not much more than a ToggleButton styled differently!
+                    </TextBlock>
+                    <Line Stroke="Black" StrokeThickness="1" X2="200"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Margin="2" Source="help.png" Width="20"/>
+                        <Label FontWeight="Bold">Press F1 for more help.</Label>
+                    </StackPanel>
+                </StackPanel>
+            </CheckBox.ToolTip>
+        </CheckBox>
+        <Frame>
+            <Frame.Content>
+               FRAME Content
+            </Frame.Content>
+        </Frame>
+
+    </StackPanel>
+    
+</Window>

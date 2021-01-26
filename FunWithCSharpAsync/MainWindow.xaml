@@ -1,0 +1,20 @@
+﻿<Window x:Class="FunWithCSharpAsync.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FunWithCSharpAsync"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="250" Width="800" FontSize="25">
+    <StackPanel>
+    <StackPanel>
+            <TextBlock>Вы не сможете печатать после нажатия кнопки Call method 10 сек</TextBlock>
+            <Button x:Name="btnButton" Click="btnButton_Click">Call method</Button>
+    </StackPanel>
+    <StackPanel>
+            <TextBlock x:Name="tbText2">Вы сможете печатать после вызова асинхронного метода</TextBlock>
+            <Button x:Name="btnButton2" Click="btnButton_Click2">Call method Async</Button>
+    </StackPanel>
+        <TextBox x:Name="tbText" FontSize="35">Попробуйте напечатать здесь</TextBox>
+    </StackPanel>
+</Window>

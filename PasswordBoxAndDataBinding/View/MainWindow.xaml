@@ -1,0 +1,17 @@
+﻿<!--http://blog.functionalfun.net/2008/06/wpf-passwordbox-and-data-binding.html-->
+<Window x:Class="PasswordBoxAndDataBinding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ff="clr-namespace:FunctionalFun.UI"
+        xmlns:local="clr-namespace:PasswordBoxAndDataBinding"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="100" Width="100">
+    <StackPanel DataContext="{Binding Main,Source={StaticResource Locator}}">
+        <TextBox x:Name="tbLogin" Text="{Binding Account.Login,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <PasswordBox x:Name="pbPasswordBox"
+      ff:PasswordBoxAssistant.BindPassword="true"  ff:PasswordBoxAssistant.BoundPassword="{Binding Path=Account.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PasswordChar="*" Password="123"/>
+        <Button x:Name="btnAccess" Command="{Binding ClickAccess}" >Ввести</Button>
+    </StackPanel>
+</Window>

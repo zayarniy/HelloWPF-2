@@ -1,0 +1,28 @@
+﻿<Window x:Class="GroupBox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GroupBox"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="141.528" Width="284.402">
+    <DockPanel VerticalAlignment="Top">
+        <GroupBox Header="Choice">
+            <StackPanel>
+                <CheckBox>First option</CheckBox>
+                <CheckBox>Second option</CheckBox>
+                <CheckBox>Third option</CheckBox>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox>
+            <GroupBox.Header>
+                <Button>Choice</Button>
+            </GroupBox.Header>
+            <StackPanel>
+                <CheckBox>First option</CheckBox>
+                <CheckBox>Second option</CheckBox>
+                <CheckBox>Third option</CheckBox>
+            </StackPanel>
+        </GroupBox>
+    </DockPanel>
+</Window>

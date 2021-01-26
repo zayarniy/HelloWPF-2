@@ -1,0 +1,19 @@
+﻿<Window x:Class="BUTTON.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BUTTON"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800">
+    <DockPanel HorizontalAlignment="Stretch">
+    <StackPanel DockPanel.Dock="Top" Margin="20">
+        <Button ClickMode="Hover" x:Name="btnHover" Click="btnHover_Click" >HOVER</Button>
+        <Button IsCancel="True">Cancel</Button>
+        <Button IsDefault="True" Name="btnOK" Click="btnOK_Click">OK</Button>
+        <RepeatButton x:Name="rbtnRepeat" Interval="1000" Delay="2000" Click="rbtnRepeat_Click">Repeat button</RepeatButton>
+         <ToggleButton Name="tbtnToggleButton" Click="tbtnToggleButton_Click">Toggle Button</ToggleButton>
+    </StackPanel>
+            <Button x:Name="btnOtherButton" DockPanel.Dock="Bottom" Height="40" Click="btnOtherButton_Click">Generate OK Click button</Button>
+    </DockPanel>
+</Window>

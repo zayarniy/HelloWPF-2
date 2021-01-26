@@ -1,0 +1,36 @@
+﻿<!--
+Хотя панель Canvas слишком примитивная для создания гибких пользовательских интерфейсов,
+она работает быстрее всех других панелей. Имейте это в виду, когда захотите максимально точно
+контролировать размещение элементов и при этом добиться наивысшей производительности.    
+    -->
+ <Window x:Class="CANVAS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CANVAS"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="240" Width="600" FontSize="14">
+    <Canvas>
+        <Button Background="Red" Canvas.Top="0" Canvas.Left="0">
+            Canvas.Top="0" Canvas.Left="0"
+        </Button>
+        <Button Background="HotPink" Canvas.Top="18" Canvas.Left="18">
+            Canvas.Top="18" Canvas.Left="18"
+        </Button>
+        <Button Background="Aqua" Canvas.Top="0" Canvas.Right="0">
+            Canvas.Top="0" Canvas.Right="0"
+        </Button>
+        <Button Background="Yellow" Canvas.Bottom="18" Canvas.Right="18" Panel.ZIndex="4">
+            Canvas.Bottom="18" Canvas.Right="18"
+        </Button>
+        <Button Background="DarkMagenta" Canvas.Bottom="0" Canvas.Left="0">
+            Canvas.Bottom="0" Canvas.Left="0"
+        </Button>
+        <Button Background="HotPink" Canvas.Bottom="0" Canvas.Right="0" Panel.ZIndex="2">
+            Canvas.Bottom="0" Canvas.Right="0"
+        </Button>
+
+
+    </Canvas>
+</Window>

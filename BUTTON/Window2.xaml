@@ -1,0 +1,22 @@
+﻿<Window x:Class="BUTTON.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BUTTON"
+        mc:Ignorable="d"
+        Title="Window2" Height="450" Width="800">
+    <StackPanel>
+        <Label>Если флажок CheckBox владеет фокусом, то нажатие клавиши плюс (+) отмечает его, а клавиши минус (-) - сбрасывает! Отметим, что это работает, только если свойство IsThreeState равно false.</Label>
+        <CheckBox x:Name="cbChecked" IsChecked="True">Checked</CheckBox>
+        <CheckBox x:Name="cbUnchecked" IsChecked="False">Unchecked</CheckBox>
+        <CheckBox x:Name="cbIndeterminate" IsChecked="{x:Null}" IsThreeState="True">Checked</CheckBox>
+        <RadioButton>Option 1</RadioButton>
+        <RadioButton>Option 2</RadioButton>
+        <RadioButton>Option 3</RadioButton>
+        <Line Stroke="Black" StrokeThickness="30" Visibility="Visible"></Line>
+        <RadioButton GroupName="A">Option 11</RadioButton>
+        <RadioButton GroupName="A">Option 12</RadioButton>
+        <RadioButton GroupName="A">Option 13</RadioButton>
+    </StackPanel>
+</Window>

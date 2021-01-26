@@ -1,0 +1,76 @@
+﻿<Window x:Class="ConvertTypeValidationExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ConvertTypeValidationExample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="160" Width="330" x:Name="wndMain">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Width" Value="190"/>
+            <Setter Property="DockPanel.Dock" Value="Left"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Width" Value="120"/>
+        </Style>
+        <!--стили для ошибок-->
+        <ControlTemplate x:Key="TextBoxErrorTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Border BorderBrush="Violet" BorderThickness="2">
+                    <AdornedElementPlaceholder />
+                </Border>
+                <TextBlock Foreground="Red"  FontWeight="Bold">!!!</TextBlock>
+            </StackPanel>
+        </ControlTemplate>
+    </Window.Resources>
+    <StackPanel VerticalAlignment="Top" DataContext="{Binding Man,ElementName=wndMain}">
+        <DockPanel>
+            <TextBlock>Name - нет проверки</TextBlock>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <DataErrorValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </DockPanel>
+        <!--Пример различных способов обработки ошибок -->
+        <DockPanel>
+            <TextBlock>Field0 - проверка по умолчанию</TextBlock>
+            <TextBox Text="{Binding Path=Field0,  UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnExceptions=False, NotifyOnValidationError=False, ValidatesOnNotifyDataErrors=False}"/>
+        </DockPanel>
+        <DockPanel>
+            <TextBlock>StringField - включили проверку</TextBlock>
+            <TextBox Text="{Binding StringField,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, ValidatesOnExceptions=True}"/>
+        </DockPanel>
+        <DockPanel>
+            <TextBlock>StringField - отключили проверку</TextBlock>
+            <TextBox Text="{Binding StringField,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, ValidatesOnExceptions=False}"/>
+        </DockPanel>
+        <DockPanel>
+            <TextBlock>Field3 - ошибка конвертации</TextBlock>
+            <TextBox Text="{Binding Field3,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, NotifyOnValidationError=True}" 
+                      Validation.Error="TextBox_Error"/>
+        </DockPanel>
+        <DockPanel>
+            <TextBlock>Field4 - пользовательское правило</TextBlock>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="Field4" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="True">
+                             <Binding.ValidationRules>
+                                 <DataErrorValidationRule/>
+                             </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>                
+            </TextBox>
+        </DockPanel>
+        <!-- Модель присоединенного события -->
+        <DockPanel>
+            <TextBlock>Field5 - Error Template</TextBlock>
+            <TextBox Text="{Binding Field5,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, NotifyOnValidationError=True}" Validation.Error="TextBox_Error" Validation.ErrorTemplate="{StaticResource TextBoxErrorTemplate}"/>
+        </DockPanel>
+    </StackPanel>
+</Window>

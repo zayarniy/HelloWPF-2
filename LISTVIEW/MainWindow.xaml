@@ -1,0 +1,35 @@
+﻿<Window x:Class="LISTVIEW.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LISTVIEW"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid><!--Show DisplayMemberBinding-->
+        <!--Элемент управления ListView, производный от ListBox, выглядит и ведет себя, как ListBox, 
+        с тем отличием, что по умолчанию установлен режим Extended SelectionMode. 
+        Однако класс ListView добавляет также свойство View, которое расширяет возможности 
+        настройки внешнего вида, не ограничиваясь одним лишь выбором нестандартной панели ItemsPanel. -->
+        <ListView xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Date"/>
+                    <GridViewColumn Header="Day of Week"  DisplayMemberBinding="{Binding DayOfWeek}"/>
+                    <GridViewColumn Header="Year" DisplayMemberBinding="{Binding Month}"/>
+                </GridView>
+            </ListView.View>
+            <sys:DateTime>1/1/2012</sys:DateTime>
+            <sys:DateTime>1/2/2012</sys:DateTime>
+            <sys:DateTime>1/3/2012</sys:DateTime>
+        </ListView>
+    </Grid>
+</Window>
+<!--Grid View автоматически поддерживает кое-какие специальные
+возможности табличного вида Проводника Windows, а именно:
+•	Разрешается менять порядок столбцов путем перетаскивания их заголовков.
+•	Разрешается изменять размеры столбцов путем перетаскивания их разделителей.
+•	Двойной щелчок по разделителю столбцов приводит к автоматической подгонке их размера под размер содержимого столбца. 
+    GridView - упрощенная версия DataGrid. Лучше использовать DataGrid
+    -->
+    
