@@ -8,7 +8,7 @@ using System.Diagnostics;
 class DemoParallelFor
 {
     static int[] data;
-    const int Size = 200000000;//Size of data (при маленьких значениях, видно, что параллельные вычисления делаются дольше
+    const int Size = 20000000;//Size of data (при маленьких значениях, видно, что параллельные вычисления делаются дольше
 
     // A method to be run as the body of a parallel loop. 
     // The statements in this loop are designed to simply 

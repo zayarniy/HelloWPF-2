@@ -59,13 +59,13 @@ namespace Listing_5
             //метод будет дожидаться окончания выполнения потока для которого 
             //вызван метод Join прежде чем пойти дальше (но это не значит, 
             //что другие потоки не могут выполняться параллельно!)
-            //mt1.Thrd.Join();
+            mt1.Thrd.Join();
             Console.WriteLine("Child #1 joined.");
 
-            //mt2.Thrd.Join();
+            mt2.Thrd.Join();
             Console.WriteLine("Child #2 joined.");
 
-            //mt3.Thrd.Join();
+            mt3.Thrd.Join();
             Console.WriteLine("Child #3 joined.");
 
             Console.WriteLine("Main thread ending.");

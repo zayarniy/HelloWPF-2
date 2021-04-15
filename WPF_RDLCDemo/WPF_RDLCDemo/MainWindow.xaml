@@ -7,7 +7,7 @@
         mc:Ignorable="d"  
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <WindowsFormsHost Name="windowsFormsHost1" Grid.Row="0" >
+        <WindowsFormsHost Name="windowsFormsHost1" Grid.Row="0" Margin="0,-2,0,2" >
             <rdlcreport:ReportViewer x:Name="_reportviewer" />
         </WindowsFormsHost>
     </Grid>

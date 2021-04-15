@@ -165,5 +165,10 @@ namespace Mailer
         {
             db.Update();
         }
+
+        private void tscTabSwitcherControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

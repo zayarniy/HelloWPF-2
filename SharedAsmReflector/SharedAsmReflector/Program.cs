@@ -46,7 +46,7 @@ namespace SharedAsmReflector
 
             // Load System.Windows.Forms.dll from GAC.
             string displayName = null;
-            displayName = "System.Windows.Forms," +
+            displayName = "System.Windows.Forms,"+
               "Version=4.0.0.0," +
               "PublicKeyToken=b77a5c561934e089," +
               @"Culture=""";
@@ -54,7 +54,7 @@ namespace SharedAsmReflector
             При создании отображаемого имени соглашение PublicKeyToken=null отражает тот факт, что требуется связывание и сопоставление со сборкой, не имеющей строгого имени. Вдобавок Culture="" указывает, что сопоставление должно осуществляться со стандартной культурой целевой машины
             */
             Assembly asm = Assembly.Load(displayName);
-
+             
             DisplayInfo(asm);
             Console.WriteLine("Done!");
             Console.ReadLine();

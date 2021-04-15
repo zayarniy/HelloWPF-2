@@ -15,10 +15,12 @@
         <TextBlock>Логин</TextBlock>
         <TextBox Name="tbLogin" Text="{Binding Path=Account.Login, UpdateSourceTrigger=PropertyChanged,Mode=OneWayToSource}"/>
         <TextBlock>Пароль</TextBlock>
+        <!--Пример срабатывания событийного тригера на изменение текста-->
         <TextBox Name="tbPassword" Text="{Binding Path=Account.Password,UpdateSourceTrigger=PropertyChanged,Mode=OneWayToSource}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="TextChanged">
-                    <i:InvokeCommandAction Command="{Binding TextCmd}"/>
+                    <i:InvokeCommandAction Command="{Binding TextCmd}" />
+                    <!--CommandParameter=""-->
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </TextBox>

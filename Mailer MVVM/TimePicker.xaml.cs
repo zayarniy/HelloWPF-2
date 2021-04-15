@@ -21,14 +21,13 @@ namespace Mailer
     /// </summary>
     public partial class TimePicker : UserControl,INotifyPropertyChanged
     {
+        
+        //Убрать hour,minute и second связав с полями date?
+        DateTime date=DateTime.Now;
 
-        DateTime date;
-
-
-
-        int hour=1;
-        int minute = 1;
-        int second = 1;
+        int hour;
+        int minute;
+        int second;
 
         public DateTime Date
         {
@@ -40,8 +39,7 @@ namespace Mailer
             {
                 if (date!=value)
                 {
-                    date = value;
-                    Date = new DateTime(Date.Year, Date.Month, Date.Day, Hour, Minute, Second);
+                    date = new DateTime(value.Year, value.Month, value.Day, Hour, Minute, Second);
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Date"));
 
                 }
@@ -51,7 +49,7 @@ namespace Mailer
         {
             get
             {
-                return hour;
+                return date.Hour;
             }
             set
             {
@@ -69,7 +67,7 @@ namespace Mailer
         {
             get
             {
-                return minute;
+                return date.Minute;
             }
             set
             {
@@ -86,7 +84,7 @@ namespace Mailer
         {
             get
             {
-                return second;
+                return date.Second;
             }
             set
             {

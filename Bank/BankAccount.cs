@@ -87,6 +87,24 @@ namespace BankAccountNS
         }
         #endregion
 
+        #region Version 4 
+        public void Debit4(double amount)
+        {
+
+            if (amount > m_balance)
+            {
+                throw new ArgumentOutOfRangeException("amount", amount, DebitAmountExceedsBalanceMessage);
+            }
+
+            if (amount < 0)
+            {
+                throw new ArgumentOutOfRangeException("amount", amount, DebitAmountLessThanZeroMessage);
+            }
+            //m_balance += amount; // намерено не правильный код
+            m_balance -= amount; // правильный код
+        }
+        #endregion
+
         //Выдача кредита
         public void Credit(double amount)
         {

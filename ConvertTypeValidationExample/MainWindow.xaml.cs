@@ -27,7 +27,21 @@ namespace ConvertTypeValidationExample
         public MainWindow()
         {
             InitializeComponent();
+            //Пример использования UpdateSourceExceptionFilter
+            BindingExpression myBindingExpression = tbField6.GetBindingExpression(TextBox.TextProperty);
+            Binding myBinding = myBindingExpression.ParentBinding;
+            myBinding.UpdateSourceExceptionFilter = new UpdateSourceExceptionFilterCallback(FilterCallback);
+            myBindingExpression.UpdateSource();
+
         }
+
+        //Метод, предоставляющий пользовательскую логику для обработки исключений, которые механизм привязки находит при обновлении значения источника привязки.
+        object FilterCallback(object o,Exception e)
+        {
+            Console.WriteLine("UpdateSourceExceptionFilterCallBack");
+            return "This is from the UpdateSourceExceptionFilterCallBack.";
+        }
+
 
         //Событие ErrorEvent является маршрутизируемым событием
         //Происходит при возникновении ошибки проверки в связанном элементе, 

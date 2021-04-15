@@ -129,7 +129,7 @@
         </TabControl>
         <StatusBar x:Name="sbStatus" Grid.Row="2">
             <Label x:Name="lbStatus"/>
-            <local:TabSwitcherControl x:Name="tscTabSwitcherControl" btnPreviousClick="tscTabSwitcherControl_btnPreviousClick" PrevText="Prev"/>
+            <local:TabSwitcherControl x:Name="tscTabSwitcherControl" btnPreviousClick="tscTabSwitcherControl_btnPreviousClick" PrevText="Prev" Loaded="tscTabSwitcherControl_Loaded"/>
         </StatusBar>
     </Grid>
 </Window>

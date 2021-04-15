@@ -2,20 +2,37 @@
 using GalaSoft.MvvmLight;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 //******** БИЗНЕС ЛОГИКА ПРОЕКТА *****************
 
 namespace MVVMPasswordLightTool.Model
 {
-   //Класс для логина и пароля
-   public class Account
+    //Класс для логина и пароля
+    public class Account : INotifyPropertyChanged
     {
-        public string Login { get; set; } = "None";
-        public string Password { get; set; } = "None";
+        private string login = "None";
+        private string password = "None";
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public string Login
+        {
+            get => login; set
+            {
+                if (value != login)
+                {
+                    login = value;
+                    //Если у элемента OneWayToSource - PropertyChanged.Invoke не обновляет данные             
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Login"));
+                }
+            }
+        }
+        public string Password { get => password; set => password = value; }
         public Account(string login, string password)
         {
-            Login = login;
+            //Лучше обращаться 
+            this.login = login;
             Password = password;
         }
     }

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace OWNCONTROL
+namespace GeometryDrawing
 {
     /// <summary>
-    /// Interaction logic for MyButton.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MyButton : UserControl
+    public partial class MainWindow : Window
     {
-        public MyButton()
+        public MainWindow()
         {
             InitializeComponent();
         }

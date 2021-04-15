@@ -38,6 +38,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.31\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -58,6 +61,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Theme\Theme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\Theme2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="TimePicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -70,11 +81,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\Database.cs" />
     <Compile Include="Model\EmailSendServiceClass.cs" />
+    <Compile Include="Model\Password.cs" />
     <Compile Include="TimePicker.xaml.cs">
       <DependentUpon>TimePicker.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\DelegateCommand.cs" />
+    <Compile Include="ViewModel\ValidationRules.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -99,6 +113,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -107,11 +122,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\FileInputBoxExample\FileInputBoxExample.csproj">
-      <Project>{c0e523c7-ee32-4f69-b2ca-ccc98db7b370}</Project>
-      <Name>FileInputBoxExample</Name>
+    <ProjectReference Include="..\TabSwitcher1 - for homework\040. TabSwitcher - RoutedEvents And DependencyProperty for homework.csproj">
+      <Project>{0dac5a7b-b1b3-4e21-b38d-6614b0d318de}</Project>
+      <Name>040. TabSwitcher - RoutedEvents And DependencyProperty for homework</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +147,9 @@
     <Resource Include="Images\schedule.ico" />
     <Resource Include="Images\settings.ico" />
     <Resource Include="Images\stat.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Описание.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,6 +8,7 @@ namespace Password_MVVM.Model
 {
     //Класс для логина и пароля
     public class Account : INotifyPropertyChanged
+    //Нередко модель реализует интерфейсы INotifyPropertyChanged или INotifyCollectionChanged,которые позволяют уведомлять систему об изменениях свойств модели.
     {
         private string login = "None";
         private string password = "None";
@@ -37,7 +38,11 @@ namespace Password_MVVM.Model
     //класс для аккаунтов
     class Accounts
     {
-
+        static List<Account> accounts= new List<Account>() {
+                                  new Account("root", "root"),
+                                  new Account("login","password"),
+                                  new Account("admin","admin")
+                                  };
 
         public bool Checks(Account account)
         {
@@ -49,12 +54,32 @@ namespace Password_MVVM.Model
         //Класс получающий аккаунты - заменить на получение аккаунтов из базы данных (см. пример получения списков емейлов)
         public static IEnumerable<Account> ListAccounts
         {
-            get;
+
+            get=>accounts;
         }
-            = new List<Account>() {
-                                  new Account("root", "root"),
-                                  new Account("login","password"),
-                                  new Account("admin","admin")
-                                  };
+
+        public static void Add(Account account)
+        {
+
+        }
+
+        public static void Remove(Account account)
+        {
+
+        }
+
+        public static void RemoveAt(int index)
+        {
+
+        }
+            
+    }
+
+    
+    public static class AccessToApp
+    {
+        static public bool access=false;
+        static public bool Access { get=>access; set=>access=value; }
+
     }
 }

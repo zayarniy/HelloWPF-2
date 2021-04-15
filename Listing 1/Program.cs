@@ -26,11 +26,11 @@ namespace Listing_1
             Console.WriteLine(thrdName + " starting.");
             do
             {
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
                 Console.WriteLine("In " + thrdName +
                                   ", Count is " + Count);
                 Count++;
-            } while (Count < 10);
+            } while (Count < 20);
 
             Console.WriteLine(thrdName + " terminating.");
         }
@@ -41,18 +41,15 @@ namespace Listing_1
         static void Main()
         {
             Console.WriteLine("Main thread starting.");
-
             // First, construct a MyThread object. 
             // Сначала, создаем объект MyThread
             MyThread mt = new MyThread("Child #1");
-
             // Next, construct a thread from that object. 
             //Затем, создаем поток из этого объекта
             Thread newThrd = new Thread(mt.Run);
-
+            newThrd.IsBackground = true;//Указываем, что поток фоновый (не приоритетный)
             // Finally, start execution of the thread. 
             newThrd.Start();
-
             do
             {
                 Console.Write(".");
@@ -61,7 +58,7 @@ namespace Listing_1
             } while (mt.Count != 10);
 
             Console.WriteLine("Main thread ending.");
-            Console.ReadKey();
+           // Console.ReadKey();
         }
     }
 }

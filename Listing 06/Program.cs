@@ -28,7 +28,7 @@ class ContinuationDemo
     {
         Console.WriteLine("Continuation starting");
 
-        for (int count = 5; count < 10; count++)
+        for (int count = 20; count < 25; count++)
         {
             Thread.Sleep(500);
             Console.WriteLine("Continuation count is " + count);
@@ -42,18 +42,18 @@ class ContinuationDemo
         Console.WriteLine("Main thread starting.");
 
         // Construct the first task. 
-        Task tsk = new Task(MyTask);
-         
+        Task firstTsk = new Task(MyTask);
+        Console.WriteLine("First task:"+firstTsk.Id);
         // Now, create the continuation. 
         #region Example 1
         //Task taskCont = tsk.ContinueWith(ContTask);//ContTask - задача запуститься после завершения taskCont
         #endregion
         #region Example 2. Using labmda for continuation
-        Task taskCont = tsk.ContinueWith((prevTask) =>
+        Task taskCont = firstTsk.ContinueWith((prevTask) =>
         {
             Console.WriteLine("Continuation starting");
-
-            for (int count = 5; count < 10; count++)
+            Console.WriteLine("PrevTask ID:"+prevTask.Id);
+            for (int count = 6; count <= 10; count++)
             {
                 Thread.Sleep(500);
                 Console.WriteLine("Continuation count is " + count);
@@ -63,14 +63,14 @@ class ContinuationDemo
         });
         #endregion
         // Begin the task sequence. 
-        tsk.Start();
+        firstTsk.Start();
 
         //Закоментируйте и раскоментируюте следующие строчки. Будет ошибка. Почему?
         taskCont.Wait();//Ждем окончания только продолжения задачи
-        tsk.Wait();
+        //firstTsk.Wait();
 
-         tsk.Dispose();
-        taskCont.Dispose();
+         firstTsk.Dispose();
+            taskCont.Dispose();
 
         Console.WriteLine("Main thread ending.");
 

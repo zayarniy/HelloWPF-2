@@ -70,6 +70,7 @@ namespace MVVMPasswordLightTool.ViewModel
             if (Model.Accounts.Checks(Account))
             {
                 AttemptCount = -1;
+                
                 Messenger.Default.Send<NotificationMessage>(new NotificationMessage("Access allowed"));
             }
             else

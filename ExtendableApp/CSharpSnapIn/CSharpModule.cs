@@ -12,4 +12,4 @@ namespace CSharpSnapIn
             Console.WriteLine("You have just used the C# snap in!");
         }
     }
-}
+} 

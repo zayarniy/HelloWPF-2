@@ -11,7 +11,7 @@ namespace XMLSerializer_List
    //[ObsoleteAttribute()]
     public class Passport
     {
-        public int Serial { get; set; }
+        public int Serial { get; set; } 
         public int Number { get; set; }
     }
 

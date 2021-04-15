@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Canvas>
-        <ComboBox x:Name="cbComboBox" Width="200" IsEditable="True" IsReadOnly="False" DropDownClosed="cbComboBox_DropDownOpened" >
+        <ComboBox x:Name="cbComboBox" Width="200" IsEditable="True" DropDownClosed="cbComboBox_DropDownOpened" >
             <!-- Set Property Items - it's only get, we can't change it by = -->
-            <ComboBoxItem Content="Item1" IsSelected="True"/>
-            <ComboBoxItem Content="Item2"/>
+            <ComboBoxItem Content="Item1"/>
+            <ComboBoxItem Content="Item2" IsSelected="True"/>
             <ComboBoxItem Content="Item3"/>
             <ComboBoxItem Content="Item4"/>
             

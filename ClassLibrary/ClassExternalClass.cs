@@ -12,7 +12,7 @@ namespace ClassLibrary
         public const double PI = 3.1415;
         public string String1 { get; private set; } = "Very important data";
         string data;
-
+         
 
         public MyExternalClass(string str)
         {

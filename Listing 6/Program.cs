@@ -7,6 +7,13 @@ using System.Threading;
 
 namespace Listing_6
 {
+
+    class Data
+    {
+        public int Num { get; set; }
+        public int Delay { get; set; }
+    }
+
     class MyThread
     {
         public int Count;
@@ -14,7 +21,7 @@ namespace Listing_6
 
         // Notice that MyThread is also pass an int value. 
         //Обратите внимание, что MyThread так же использует int value
-        public MyThread(string name, int num)
+        public MyThread(string name, Data data)
         {
             Count = 1;
 
@@ -25,25 +32,25 @@ namespace Listing_6
             Thrd = new Thread(new ParameterizedThreadStart(this.Run));
 
             Thrd.Name = name;
-
+            //Data data = new Data() { Delay = 500, Num = 10 };
             // Here, Start() is passed num as an argument. 
-            Thrd.Start(num);
+            Thrd.Start(data);
         }
 
         // Notice that this version of Run() has 
         // a parameter of type object. 
-        void Run(object num)
+        void Run(object data)
         {
             Console.WriteLine(Thrd.Name +
-                              " starting with count of " + num);
+                              " starting with count of " + (data as Data).Num);
 
             do
             {
-                Thread.Sleep(500);
+                Thread.Sleep((data as Data).Delay);
                 Console.WriteLine("In " + Thrd.Name +
                                   ", Count is " + Count);
                 Count++;
-            } while (Count <=(int)num);
+            } while (Count <= (data as Data).Num);
 
             Console.WriteLine(Thrd.Name + " terminating.");
         }
@@ -56,8 +63,8 @@ namespace Listing_6
 
             // Notice that the iteration count is passed 
             // to these two MyThread objects. 
-            MyThread mt = new MyThread("Child #1", 5);
-            MyThread mt2 = new MyThread("Child #2", 3);
+            MyThread mt = new MyThread("Child #1", new Data() { Delay = 500, Num = 10 });
+            MyThread mt2 = new MyThread("Child #2", new Data() { Delay = 1000, Num = 7 });
 
             do
             {

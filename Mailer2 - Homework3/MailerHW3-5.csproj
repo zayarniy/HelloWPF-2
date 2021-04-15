@@ -182,14 +182,6 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GeekBrainTools\GeekBrainTools.csproj">
-      <Project>{924d2e60-21ba-4935-b44f-310fccf34621}</Project>
-      <Name>GeekBrainTools</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Password_MVVM\MVVMPassword.csproj">
-      <Project>{9d932f79-d1db-4a45-b8da-ab66a9fe83ba}</Project>
-      <Name>MVVMPassword</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TabSwitcher\100. TabSwitcher %28from manual%29.csproj">
       <Project>{E789DDBF-4C8C-4B19-A939-0D2D70B3F153}</Project>
       <Name>100. TabSwitcher %28from manual%29</Name>

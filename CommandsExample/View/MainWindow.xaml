@@ -6,13 +6,16 @@
         xmlns:local="clr-namespace:CommandsExample"
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:CommandsExample.ViewModel"
+        xmlns:vm2="clr-namespace:CommandsExample.ViewModel"
         Title="MainWindow" Height="100" Width="85" x:Name="wndMainWindow">
     <Window.DataContext>
         <vm:ViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+    </Window.Resources>
     <StackPanel>
         <TextBox x:Name="tbText" Text="Text2"/>
-        <Button Command="{Binding Command1}" CommandParameter="{Binding ElementName=tbText,Path=Text}" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
+        <Button Command="{Binding Path=Command1}" CommandParameter="{Binding ElementName=tbText,Path=Text}" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
      
     </StackPanel>
 </Window>

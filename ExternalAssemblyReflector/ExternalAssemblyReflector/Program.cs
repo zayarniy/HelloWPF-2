@@ -6,6 +6,14 @@ using System.Text;
 using System.Reflection;
 using System.IO;  // For FileNotFoundException definition.
 //утилита sn - позволяет получить Public Key Token
+/*
+PublicKeyToken - уникальный идентификатор сборки, выдается при помещении в GAC (Global Assembly Cache)
+
+Задает токен открытого ключа сборки, представляющий собой последние 8 байтов хэша SHA-1 открытого ключа, с помощью которого подписана сборка.
+
+Culture - строка, указывающая язык и региональные параметры сборки. Пустая строка указывает на инвариантный язык и региональные параметры.
+ 
+*/
 namespace ExternalAssemblyReflector
 {
     class Program
@@ -31,7 +39,7 @@ namespace ExternalAssemblyReflector
 
             do
             {
-                Console.WriteLine("\nEnter an assembly to evaluate");
+                Console.WriteLine("\nEnter an assembly to evaluate (Enter - assembly by default)");
                 Console.Write("or enter Q to quit: ");
 
                 // Get name of assembly.
@@ -47,18 +55,18 @@ namespace ExternalAssemblyReflector
                 // Try to load assembly.
                 try
                 {                    
-                    asmName = "TabSwitcher";//Лежит в папке рядом
+                    if (asmName=="") asmName = "TabSwitcher";//Лежит в папке рядом
                     //Load - имя сборки
-                    //asm = Assembly.Load(asmName);
+                    asm = Assembly.Load(asmName);//System
                     //LoadFrom - имя файла
-                    asm = Assembly.LoadFrom(asmName+".dll");
+                    //asm = Assembly.LoadFrom(asmName+".dll");
                     DisplayTypesInAsm(asm);
                 }
                 catch
                 {
                     Console.WriteLine("Sorry, can't find assembly.");
                 }
-            } while (true);
+            } while (true); 
         }
     }
 }

@@ -61,7 +61,7 @@ namespace Listing_3
             //Основной поток может закончиться позже, но не раньше пока не закончатся приоритетные потоки (нужно поменять время в Thread.Sleep(150000) на меньше
             Console.WriteLine("Main thread ending at "+DateTime.Now.ToLongTimeString());
 
-            Console.Read();
+            //Console.Read();
 
         }
     }

@@ -15,15 +15,16 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="60"/>
         </Grid.ColumnDefinitions>
-        <Calendar Grid.Row="0" x:Name="cldSchedulDateTimes" SelectionMode="MultipleRange"  SelectedDate="{Binding Date,Mode=TwoWay}"  Grid.ColumnSpan="2"/>
-        <TextBlock Text="Hour" Grid.Row="1" Grid.Column="0"/>
-        <TextBlock Text="Minute" Grid.Row="2" Grid.Column="0"/>
-        <TextBlock Text="Second" Grid.Row="3" Grid.Column="0"/>
-        <ComboBox Grid.Row="1" Grid.Column="1" x:Name="cbHour" ItemsSource="{Binding Numbers24}" Text="{Binding Hour,Mode=TwoWay}"></ComboBox>
-        <ComboBox Grid.Row="2" Grid.Column="1" x:Name="cbMinute" ItemsSource="{Binding Numbers60}" Text="{Binding Minute,Mode=TwoWay}"></ComboBox>
-        <ComboBox Grid.Row="3" Grid.Column="1" x:Name="cbSecond" ItemsSource="{Binding Numbers60}" Text="{Binding Second,Mode=TwoWay}"></ComboBox>
+        <Calendar Grid.Row="0" x:Name="cldSchedulDateTimes" SelectionMode="MultipleRange"  SelectedDate="{Binding Date,Mode=TwoWay}"  Grid.ColumnSpan="4"/>
+        <TextBlock Text="Hour:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"/>
+        <TextBlock Text="Minute:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center"/>
+        <TextBlock Text="Second:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center"/>
+        <ComboBox Grid.Row="1" Grid.Column="1" x:Name="cbHour" ItemsSource="{Binding Numbers24}" Text="{Binding Hour,Mode=TwoWay}" Width="45" HorizontalAlignment="Left" MaxDropDownHeight="100"/>
+        <ComboBox Grid.Row="2" Grid.Column="1" x:Name="cbMinute" ItemsSource="{Binding Numbers60}" Text="{Binding Minute,Mode=TwoWay}" Width="45" HorizontalAlignment="Left" MaxDropDownHeight="100"/>
+        <ComboBox Grid.Row="3" Grid.Column="1" x:Name="cbSecond" ItemsSource="{Binding Numbers60}" Text="{Binding Second,Mode=TwoWay}" Width="45" HorizontalAlignment="Left" MaxDropDownHeight="100"/>
     </Grid>
 </UserControl>

@@ -29,7 +29,19 @@ namespace FunWithCSharpAsync2
         private async void btnButton_Click(object sender, RoutedEventArgs e)
         {
             tbText.Text = "Method 1 was started";
-            await Task.Run(() => Thread.Sleep(10000));
+            //Run - запустит в другом потоке.
+            //Обращение к элементам UI только через диспетчер
+            await Task.Run(() =>
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.WriteLine(i);
+                    Thread.Sleep(1000);
+                    //tbText.Text = i.ToString();//Не сработает! 
+                    this.Dispatcher.Invoke(() => tbText.Text = i.ToString());//Нужно обращаться через диспетчер                };
+                };
+            }
+            );
             tbText.Text = "Method 1 done!";//Сработает, так как обращение к элементам происходят в том же потоке
             //MessageBox.Show("Done!");
         }

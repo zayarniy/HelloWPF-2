@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -11,49 +12,107 @@ namespace Mailer.ViewModel
 {
     public class ViewModel : INotifyPropertyChanged
     {
+        private string login = "zaazaa@yandex.ru";
+        private string subject = "Hello";
+        private string to;
+        private string from;
+        private string body = "";
+        private int tickCount = 0;
 
         //реализация интерфейса INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
 
-        //внутрение поля класса
-        bool access;
-        int attemptCount = 0;
-
-        static public bool GetAccess { get; private set; } = false;
-
-        #region Публичное свойство для привязки "кол-во попыток"
-        public int AttemptCount
+        public ViewModel()
         {
-            get
-            { return attemptCount; }
+            Model.Schedule schedule = new Model.Schedule(Tick, 5 );
+            schedule.Start();
+        }
 
-            private set
+        void Tick(object send, EventArgs args)
+        {
+            SendAll();
+            TickCount++;
+            //Console.WriteLine(TickCount);
+        }
+
+        public int TickCount 
+        {
+            get => tickCount; set
             {
-                if (attemptCount != value)
+                if (tickCount != value)
                 {
-
-                    attemptCount = value;
-                    //Уведомление о том, что свойство изменилось(для обновления пользовательского интерфейса)
-                    PropertyChanged.Invoke(this, new PropertyChangedEventArgs("AttemptCount"));
+                    tickCount = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TickCount"));
                 }
             }
         }
-        #endregion
-        
         Model.EMailSendServiceClass EmailSendServiceClass { get; set; } = new Model.EMailSendServiceClass();
 
-        public string Body { get; set; }
+        public Model.Database Database { get; set; } = new Model.Database();
+
+        public int Port { get; set; } = 25;//Пока используется только для демонстрации валидации
+
+        public string Log//Журнал работы программы
+        {
+            get
+            {
+                return Model.EMailSendServiceClass.GetLog();
+            }
+            set
+            {
+                Model.EMailSendServiceClass.SetLog(value);
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Log"));
+            }
+        }
 
         public List<string> FromList { get; set; } = new List<string>() { "zaazaa@yandex.ru", "putin@kremlin.ru" };
-        public string From { get; set; }
-        public string To { get; set; }
+        public string Body
+        {
+            get => body;
+            set
+            {
+                body = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Body"));
+            }
+        }
+        public string From
+        {
+            get => from;
+            set
+            {
+                from = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("From"));
+            }
+        }
+        public string To
+        {
+            get => to;
+            set
+            {
+                to = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("To"));
+            }
+        }
         public List<string> ToList { get; set; } = new List<string>() { "zaazaa@yandex.ru", "putin@kremlin.ru" };
-        public string Subject { get; set; } = "Hello";
+        public string Subject
+        {
+            get => subject;
+            set
+            {
+                subject = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subject"));
+            }
+        }
+        //public string Adress { get; set; }
 
-        public string Adress { get; set; }
-
-        public string Login { get; set; }
-
+        public string Login
+        {
+            get => login;
+            set
+            {
+                login = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Login"));
+            }
+        }
 
         #region Создание команды - Версия 1
         private void Execute(object obj)
@@ -63,7 +122,7 @@ namespace Mailer.ViewModel
 
             //if (Access)
             {
-              //  GetAccess = true;
+                //  GetAccess = true;
                 MailMessage mm = new MailMessage(From, To, Subject, Body);
                 EmailSendServiceClass.Send(mm);
                 //Mailer.MainWindow mailerWindow = new Mailer.MainWindow();
@@ -75,7 +134,7 @@ namespace Mailer.ViewModel
         {
             return EmailSendServiceClass.Check(Body);
         }
-        
+
 
         //Need using System.Windows.Input
         public ICommand Send
@@ -103,24 +162,126 @@ namespace Mailer.ViewModel
         //}
         #endregion
 
-        #region Публичное свойство для привязки
-        public bool Access
+        public ICommand ToDoTask
         {
             get
             {
-                return access;
+                return new DelegateCommand((obj) =>
+                {
+                    Console.WriteLine("Pressed");
+                    DateTime dt = ((DateTime)obj);
+                    Console.WriteLine("Запланировано at " + dt.ToLongDateString() + " " + dt.ToLongTimeString());
+                    Database.Items.Add(new Model.Item(dt, new MailMessage(from, to, subject, body)));
+                },
+                (obj) => ((obj != null) && ((DateTime)obj) > DateTime.Now) && Check());
+            }
+
+        }
+
+        public ICommand SendAtOnce
+        {
+            get
+            {
+                return new DelegateCommand((obj) =>
+                {
+                          EmailSendServiceClass.Send(new MailMessage(From, To, Subject, Body));
+                          Console.WriteLine("Message has sent");
+                },
+                (obj) => Check());
+            }
+        }
+
+        public ICommand AddNewMail
+        {
+            get
+            {
+                return new DelegateCommand((obj) =>
+                {
+                    Database.Items.Add(new Model.Item(DateTime.Now,new MailMessage(From, To, Subject, Body)));
+                    Console.WriteLine("Message has sent");
+                },
+                (obj) => Check());
+            }
+        }
+
+
+        void SendAll()
+        {
+            DateTime now = DateTime.Now;
+            foreach (var mail in Database.Items)
+                if (!mail.Sent && mail.DateTime <= now)
+                {
+                    EmailSendServiceClass.Send(mail.MailMessage);
+                    mail.Sent = true;
+                    Console.WriteLine("Message has sent");
+                }
+        }
+
+        public ICommand SendAllAtOnce
+        {
+            get
+            {
+                return new DelegateCommand((obj) =>
+                {
+                    SendAll();
+
+                },
+                (obj) =>
+
+                {
+                    //Проверяем есть ли не отправленные сообщения
+                    foreach (var el in Database.Items)
+                    {
+                        if (el.Sent == false)
+                        {
+                            return true;
+                        }
+                    }
+                    return false;
+                });
+            }
+
+        }
+
+        bool Check()
+        {
+            return !(String.IsNullOrEmpty(From) || String.IsNullOrEmpty(To) || String.IsNullOrEmpty(Login) /*|| String.IsNullOrEmpty(Adress)*/);
+        }
+
+
+        private int tabControlIndex = 0;
+
+        public int TabControlIndex
+        {
+            get
+            {
+                return tabControlIndex;
             }
             set
             {
-                if (access != value)
+                if (tabControlIndex != value)
                 {
-                    access = value;
-                    PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Access"));
+                    tabControlIndex = value;
+                    Console.WriteLine("Invoke");
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TabControlIndex"));
                 }
             }
         }
-        #endregion
 
+        public ICommand TabSwitcherPrev
+        {
+            get
+            {
+                return new DelegateCommand((obj) =>
+                {
+
+                    TabControlIndex = TabControlIndex == 0 ? 5 : --TabControlIndex;
+                    Console.WriteLine("Prev " + tabControlIndex);
+
+                },
+                (obj) => true);
+            }
+        }
 
     }
 }

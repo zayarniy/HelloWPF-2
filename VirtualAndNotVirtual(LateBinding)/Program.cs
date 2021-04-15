@@ -21,7 +21,7 @@ namespace VirtualAndNotVirtual_LateBinding_
     }
 
 
-    class Program
+    class Program 
     {
         static void Main(string[] args)
         {

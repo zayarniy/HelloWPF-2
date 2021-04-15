@@ -1,6 +1,12 @@
 ﻿// TaskFactory, Use a lambda expression as a task and Dispose without wait (exception)
 //Более совершенный пример запуска задач.
 //Использование класса TaskFactory
+//Additional information
+//https://docs.microsoft.com/ru-ru/dotnet/api/system.threading.tasks.taskfactory.startnew?view=net-5.0
+
+//Чем TaskFactory.StartNew лучше чем старый ThreadPool
+//https://coderoad.ru/3047268/TaskFactory-StartNew-%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2-ThreadPool-QueueUserWorkItem
+//Если коротко, то больше функциональность. Так же у StartNew есть перегрузка TaskScheduler, которая позволяет управлять 
 
 using System;
 using System.Threading;
@@ -54,13 +60,15 @@ class DemoLambdaTask
             Console.WriteLine("Main:"+i);
             Thread.Sleep(1000);
         }
-        Task.WaitAll(tsk, tsk2, tsk3);
+        int task=Task.WaitAny(tsk, tsk2, tsk3);
+        //Task.WaitAll(tsk,tsk2,tsk3);
+        Console.WriteLine("Complete task ID:"+task);
         // Dispose of tsk. 
-        tsk.Dispose();//Это не обязательно для простых задач, но желательно, для объемных
+        tsk.Dispose();//Это не обязательно для простых задач, но желательно, для объемных        
         //tsk2.Dispose();//Exception if tsk2 won't finished
         Console.WriteLine("Main thread ending.");
 
-       //Console.Read();
+       Console.Read();
 
     }
 

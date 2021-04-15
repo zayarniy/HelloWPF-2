@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+//Здесь для взаимодействия с ViewModel используется библиотека MS XAMLBehavior WPF
 namespace Mailer
 {
     /// <summary>
@@ -22,47 +22,16 @@ namespace Mailer
     /// </summary>
     public partial class MainWindow : Window
     {
-        ViewModel.ViewModel ViewModel { get; set; } = new ViewModel.ViewModel();
+
+        //ViewModel.ViewModel ViewModel { get; set; } = new ViewModel.ViewModel();
         public MainWindow()
         {
             InitializeComponent();
-            EMailSendServiceClass.Action += EMailSendServiceClass_Action;
-            this.DataContext = ViewModel;
+            //this.DataContext = ViewModel;
 
         }
 
-        private void EMailSendServiceClass_Action(string message)
-        {
-            tbLog.Text += DateTime.Now + ":" + message + "\r\n";
-            Console.WriteLine(DateTime.Now + ":" + message + "\r\n");
-        }
-
-        private void btnSendAtOnce_Click(object sender, RoutedEventArgs e)
-        {
-            //string strLogin = cbSenderSelect.Text;
-            //string strPassword = cbSenderSelect.SelectedValue.ToString();
-            string strLogin = tbUserName.Text;
-            string strPassword = tbPassword.Password;
-            Console.WriteLine("Данные взяли из полей настроек");
-            if (string.IsNullOrEmpty(strLogin))
-            {
-                MessageBox.Show("Выберите отправителя");
-                return;
-            }
-            if (string.IsNullOrEmpty(strPassword))
-            {
-                MessageBox.Show("Укажите пароль отправителя");
-                return;
-            }
-
-            //            EMailInfo eMailInfo = new EMailInfo();
-            //MailMessage mm = new MailMessage(cbFrom.Text, cbTo.Text, tbSubject.Text, tbBody.Text);
-
-            //EMailSendServiceClass emailSender = new EMailSendServiceClass();
-            //emailSender.Send(mm, System.IO.File.ReadAllText("C:\\Temp\\1.txt"), 587);
-        }
-
-        private void btnSend2_Click(object sender, RoutedEventArgs e)
+        private void tscTabSwitcherControl_Loaded(object sender, RoutedEventArgs e)
         {
 
         }

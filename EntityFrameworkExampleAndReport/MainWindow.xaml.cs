@@ -40,6 +40,18 @@ namespace EntityFrameworkExample
         private void ReportViewer_Load(object sender, EventArgs e)
         {
             ReportDataSource reportDataSource = new ReportDataSource();
+            MusicDatabaseDataSet dataSet = new MusicDatabaseDataSet();
+            //_Database_mdfDataSet dataset = new _Database_mdfDataSet();
+            dataSet.BeginInit();
+            reportDataSource.Name = "DataSet1";
+            reportDataSource.Value = dataSet.Tracks;
+            ReportViewer.LocalReport.DataSources.Add(reportDataSource);
+            ReportViewer.LocalReport.ReportPath = "../../Report.rdlc";
+            dataSet.EndInit();
+
+            MusicDatabaseDataSetTableAdapters.TracksTableAdapter tracksTableAdapter = new MusicDatabaseDataSetTableAdapters.TracksTableAdapter { ClearBeforeFill = true };
+            tracksTableAdapter.Fill(dataSet.Tracks);
+            ReportViewer.RefreshReport();
 
         }
 
@@ -78,6 +90,22 @@ namespace EntityFrameworkExample
                     //row.DetailsVisibility = row.DetailsVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
                     break;
                 }
+        }
+
+        public void SavePDF(ReportViewer viewer, string savePath)
+
+        {
+            byte[] Bytes = viewer.LocalReport.Render(format: "PDF", deviceInfo: "");
+
+            using (System.IO.FileStream stream = new System.IO.FileStream(savePath, System.IO.FileMode.Create))
+            {
+                stream.Write(Bytes, 0, Bytes.Length);
+            }
+        }
+
+        private void btnSavePDFPerort_Click(object sender, RoutedEventArgs e)
+        {
+            SavePDF(ReportViewer, "report.pdf");
         }
     }
 }

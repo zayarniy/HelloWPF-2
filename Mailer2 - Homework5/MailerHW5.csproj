@@ -181,12 +181,6 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Password_MVVM\MVVMPassword.csproj">
-      <Project>{9d932f79-d1db-4a45-b8da-ab66a9fe83ba}</Project>
-      <Name>MVVMPassword</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="ViewModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -19,7 +19,7 @@ using GalaSoft.MvvmLight.Messaging;
 using System.Windows;
 
 // ласс ViewModelLocator €вл€етс€ посредником между вашим пользовательским 
-//интерфейсом и ViewModels, который св€зывает ViewModels с пользовательским интерфейсом.
+//интерфейсом и ViewModels, который св€зывает ViewModels с пользовательским интерфейсом(View).
 //≈сли вы хотите использовать вашу ViewModel в качестве источника прив€зки дл€ 
 //пользовательского интерфейса, вы должны предоставить эту ViewModel как свойство 
 //в классе ViewModelLocator.
@@ -41,17 +41,20 @@ namespace MVVMPasswordLightTool.ViewModel
             // мы регистрируем MainViewModel в контейнере IOC.
             SimpleIoc.Default.Register<MainViewModel>();
             //ћы регистрируем NotifyUserMethod с классом Messenger. “аким образом, когда мы отправл€ем текстовое сообщение с классом Messenger с помощью NotificationMessage, оно автоматически выполн€ет NotifyUserMethod.
+            //https://docs.microsoft.com/ru-ru/archive/msdn-magazine/2014/june/mvvm-the-mvvm-light-messenger-in-depth
+            //–егистрируемс€ дл€ получени€ сообщений через класс Messenger
             Messenger.Default.Register<NotificationMessage>(this, NotifyUserMethod);
+            Messenger.Default.Register<NotificationMessage>(this, NotifyUserMethod2);
         }
 
-        public MainViewModel Main
+        public MainViewModel MainView
         {
             get
             {
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
-        public ViewModel2 Main2//ѕример создание другой модели
+        public ViewModel2 MainView2//ѕример создание другой модели
         {
             get
             {
@@ -63,8 +66,16 @@ namespace MVVMPasswordLightTool.ViewModel
 
         private void NotifyUserMethod(NotificationMessage message)
         {
-            MessageBox.Show(message.Notification);
+            //MessageBox.Show(message.Notification);
+            System.Console.WriteLine("ѕолучатель 1:"+message.Notification);
         }
+
+        private void NotifyUserMethod2(NotificationMessage message)
+        {
+            MessageBox.Show(message.Notification,"ѕолучатель 2");
+            //System.Console.WriteLine(message.Notification);
+        }
+
 
         public static void Cleanup()
         {

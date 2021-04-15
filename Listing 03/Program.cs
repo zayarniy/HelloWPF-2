@@ -44,11 +44,12 @@ class DemoTask
         for (int i = 0; i < 60; i++)
         {
             Console.Write(".");
-            Thread.Sleep(100);
+            Thread.Sleep(200);
         }
 
         Console.WriteLine("Main thread ending.");
 
+        Console.WriteLine("Main:" + Thread.CurrentThread.ManagedThreadId);
         Console.Read();
 
     }

@@ -20,13 +20,14 @@ namespace Password_MVVM.ViewModel
         public ViewModel()
         {
             ClickCommand = new DelegateCommand(Execute, CanExecute);
-            TextCommand = new DelegateCommand(Execute2, CanExecute2);
+            //TextCommand = new DelegateCommand(Execute2, CanExecute2);
         }
+
+        //Вынести в отдельный класс
 
         //внутрение поля класса
         bool access;
         int attemptCount = 0;
-
         static public bool GetAccess { get; private set; } = false;
 
         #region Публичное свойство для привязки "кол-во попыток"
@@ -83,6 +84,7 @@ namespace Password_MVVM.ViewModel
         {
             get
             {
+                Console.WriteLine("Произошла привязка");
                 return TextCommand;
             }
         }

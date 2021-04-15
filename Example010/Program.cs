@@ -142,6 +142,7 @@ namespace Example010
             thread.Name = "Вторичный поток";
             thread.Start();
             Console.WriteLine("Ждем окончания работы потока.");
+            thread.Join();
         }
 
 

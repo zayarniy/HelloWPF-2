@@ -49,10 +49,12 @@ class PLINQCancelDemo
         }
         catch (OperationCanceledException exc)
         {
+            Console.WriteLine("OperationCanceledException");            
             Console.WriteLine(exc.Message);
         }
         catch (AggregateException exc)
         {
+            Console.WriteLine("AggregateException");
             Console.WriteLine(exc);
         }
         finally

@@ -16,7 +16,7 @@ namespace XMLSerializer_List
     //[Obsolete("Don't use it")]//It's the short write ObsoleteAttribute
    // [ObsoleteAttribute("Don't use it")]//Go To Defenition (F12)
     //[Obsolete("Don't use it",true)]//Error if use it
-
+     
     public class Passport
     {
         public int Serial { get; set; }

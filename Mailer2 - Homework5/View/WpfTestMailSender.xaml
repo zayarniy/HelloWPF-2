@@ -81,7 +81,7 @@
                     <Button x:Name="btnSend2"  Grid.Row="2" HorizontalAlignment="Center"   VerticalAlignment="Top" Width="180" Click="btnSend2_Click" Height="25" Grid.ColumnSpan="2" Margin="303,0">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="Images/clock.png" Width="16" Height="16" />
+                                <Image Width="16" Height="16" />
                                 <TextBlock Margin="3,0,0,0" Text="Отправить запланированно" VerticalAlignment="Center" />
                             </StackPanel>
                         </Button.Content>
@@ -89,7 +89,7 @@
                     <Button x:Name="btnSendAtOnce"   Grid.Row="3" HorizontalAlignment="Center"   VerticalAlignment="Top" Width="180" Click="btnSendAtOnce_Click" Height="25" Grid.ColumnSpan="2" Margin="303,0">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="Images/cache.png" Width="16" Height="16" />
+                                <Image  Width="16" Height="16" />
                                 <TextBlock Margin="3,0,0,0" Text="Отправить сразу" VerticalAlignment="Center" />
                             </StackPanel>
                         </Button.Content>

@@ -21,8 +21,8 @@ namespace CommandsExample.ViewModel
             get
             {
                 //var command = new DelegateCommand((o) => { MessageBox.Show("Команда 1"); },CanClick);
-                //var command = new DelegateCommand(Execute, CanClick);
-                return new DelegateCommand(Execute, CanClick); ;
+                ////var command = new DelegateCommand(Execute, CanClick);
+                return new DelegateCommand(Execute, CanClick); 
             }
         }
 

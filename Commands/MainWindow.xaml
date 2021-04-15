@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LogicTree"
         mc:Ignorable="d"
-        Title="LogicTree" Height="450" Width="800" Background="LightGreen" Foreground="White" SizeToContent="WidthAndHeight">
+        Title="LogicTree" Height="250" Width="400" Background="LightGreen" Foreground="White" SizeToContent="WidthAndHeight">
     <Window.CommandBindings>
         <CommandBinding Command="Help" CanExecute="HelpCanExecute" Executed="HelpExecuted"/>
     </Window.CommandBindings>
@@ -30,7 +30,6 @@
         </StackPanel>
         <StatusBar>Moscow, 2020</StatusBar>
     </StackPanel>
-    
 </Window>
 <!--
 RelativeSource Указывает на исходный объект, использующий объект RelativeSource, который позволяет базировать ссылку на текущем элементе.    

@@ -16,7 +16,7 @@
                 <GridView>
                     <GridViewColumn Header="Date"/>
                     <GridViewColumn Header="Day of Week"  DisplayMemberBinding="{Binding DayOfWeek}"/>
-                    <GridViewColumn Header="Year" DisplayMemberBinding="{Binding Month}"/>
+                    <GridViewColumn Header="Year" DisplayMemberBinding="{Binding Year}"/>
                 </GridView>
             </ListView.View>
             <sys:DateTime>1/1/2012</sys:DateTime>

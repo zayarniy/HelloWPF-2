@@ -15,7 +15,7 @@ class DemoCancelTask
     // A method to be run as a task. 
     static void MyTask(Object ct)//передаем токен отмены
     {
-        CancellationToken cancelTok = (CancellationToken)ct;
+        CancellationToken cancelTok = (CancellationToken)ct;//передаем токен отмены
 
         // Check if cancelled prior to starting. 
         cancelTok.ThrowIfCancellationRequested();

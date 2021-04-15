@@ -35,7 +35,7 @@ namespace MVVMPasswordLightTool.ViewModel
             //this.ClickAccess = new GalaSoft.MvvmLight.CommandWpf.RelayCommand(Check, CanExecute);
             this.ClickAccess2 = new RelayCommand(Check, CanExecute);
             this.CloseWindowCommand = new RelayCommand<MainWindow>(this.CloseWindow);
-
+            this.ClearLogin = new RelayCommand(() => { Account.Login = ""; },()=> !System.String.IsNullOrEmpty(Account.Login));
         }
 
 
@@ -44,15 +44,20 @@ namespace MVVMPasswordLightTool.ViewModel
             window?.Close();
         }
 
+        //Обратите внимание, что здесь не реализован интерфейс INotifyPropertyChanged
         public int AttemptCount { get; private set; } = 0;
 
-        public Account Account { get; set; } = new Account("", "");
+        public Account Account { get; set; } = new Account("root", "root");
 
         public ICommand ClickAccess { get; private set; }
 
         public RelayCommand ClickAccess2 { get; private set; }
 
+        public RelayCommand ClearLogin { get; private set; }
+
         public RelayCommand<MainWindow> CloseWindowCommand { get; private set; }
+
+        //Изменить команду для ввод, чтобы очищать login и пароль после ввода
 
         public ObservableCollection<Account> AccountsList
         {
@@ -70,9 +75,9 @@ namespace MVVMPasswordLightTool.ViewModel
                 AttemptCount = -1;
                 Messenger.Default.Send<NotificationMessage>(new NotificationMessage("Access allowed"));
             }
+            //Сообщаем о том, что свойство AttemptCount изменилось
             RaisePropertyChanged("AttemptCount");
         }
-
         bool CanExecute()
         {
             return AttemptCount < 3 && AttemptCount != -1;

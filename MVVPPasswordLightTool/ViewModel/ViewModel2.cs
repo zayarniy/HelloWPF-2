@@ -68,6 +68,7 @@ namespace MVVMPasswordLightTool.ViewModel
             if (Model.Accounts.Checks(Account))
             {
                 AttemptCount = -1;
+                //Сообщаем зарегистрированным пользователям информацию
                 Messenger.Default.Send<NotificationMessage>(new NotificationMessage("Access allowed"));
             }
             RaisePropertyChanged("AttemptCount");

@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BankAccountNS;
+//Цель - продемострировать некоторые возможности Unit тестов. Нужно исправить ошибки в процедурах тестирования
 
 namespace BankTest
 {
@@ -40,7 +41,7 @@ namespace BankTest
             // Arrange
             double beginningBalance = 11.99;
             double debitAmount = 4.55;
-            double expected = 7.44;
+            double expected =7.44;// - исправить
             BankAccount account = new BankAccount("Иван Иванов", beginningBalance);
 
             // Act
@@ -48,7 +49,7 @@ namespace BankTest
 
             // Assert
             double actual = account.Balance;
-            Assert.AreEqual(expected, actual, 0.001, "Снятие с аккаунта не корректно");
+            Assert.AreEqual(expected, actual, 0.01, "Снятие с аккаунта не корректно");
         }
         /*
         Метод очень прост: он создает новый объект BankAccount с начальным балансом, а затем снимает допустимое значение. 
@@ -76,6 +77,7 @@ namespace BankTest
             double debitAmount = 100.00;
             BankAccount account = new BankAccount("Mr. Bryan Walton", beginningBalance);
             // Act and assert
+            //Ожидается исключение. Оно происходит и это правильно. Исправить заменой на  ArgumentOutOfRangeException
             Assert.ThrowsException<System.ArgumentOutOfRangeException>(() => account.Debit2(debitAmount));
         }
         /*
@@ -110,11 +112,12 @@ namespace BankTest
         Мы можем выполнить рефакторинг тестируемого метода для использования данного конструктора. 
         Более того, можно использовать открытые для общего доступа члены типа для указания ошибок.         
         */
+        //ТЕСТ ПРОХОДИТ КАК ПРАВИЛЬНЫЙ И ЭТО И ЕСТЬ ОШИБКА. Нет извещения об ошибке. Исправлено в Test4
         [TestMethod]
         public void Test3_Debit_WhenAmountIsLessThanZero_ShouldThrowArgumentOutOfRange2()
         {
             // Arrange 
-            double beginningBalance = 11.99;
+            double beginningBalance = -11.99;
             double debitAmount = 20.0;
             BankAccount account = new BankAccount("Mr. Bryan Walton", beginningBalance);
 
@@ -156,13 +159,13 @@ namespace BankTest
         {
             // Arrange
             double beginningBalance = 11.99;
-            double debitAmount = -20.0;
+            double debitAmount = 100.0;
             BankAccount account = new BankAccount("Mr. Bryan Walton", beginningBalance);
 
             // Act
             try
             {
-                account.Debit3(debitAmount);
+                account.Debit4(debitAmount);
             }
             catch (System.ArgumentOutOfRangeException e)
             {

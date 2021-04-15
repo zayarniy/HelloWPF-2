@@ -6,6 +6,10 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
+using System.Windows.Threading;
+using System.Threading;
 
 namespace Mailer.Model
 {
@@ -20,26 +24,79 @@ namespace Mailer.Model
 
     }
 
+    class Schedule
+    {
+        DispatcherTimer dispatcherTimer;
+
+        public void Start()
+        {
+            dispatcherTimer.Start();
+        }
+
+        public void Stop()
+        {
+            dispatcherTimer.Stop();
+        }
+
+        public Schedule(EventHandler dispTimer,int seconds)
+        {
+            dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Interval = new TimeSpan(0, 0, seconds);
+            dispatcherTimer.Tick += new EventHandler( dispTimer);
+            //dispatcherTimer.Tick += DispatcherTimer_Tick;
+            //dispatcherTimer.Start();
+        }
+
+    }
 
     class EMailSendServiceClass 
     {
 
 
         static public event Action<string> Action;//Любое событие может вызываться только внутри класса в котором оно определено
-        
+
+        private static string log;//Журнал
+
+        public static string GetLog()
+        {
+            return log;
+        }
+
+        public static void SetLog(string value)
+        {
+            log = value;
+            try
+            {
+                System.IO.File.WriteAllText("log.txt", log);
+                //Action?.Invoke("Log has been written");
+            }
+            catch (Exception exc)
+            {
+                //Action?.Invoke(exc.Message);
+                Console.WriteLine(DateTime.Now + ":" + exc + "\r\n");
+            }
+        }
+
+        public EMailSendServiceClass()
+        {
+            Action += EMailSendServiceClass_Action;
+            if (System.IO.File.Exists("log.txt"))
+            {
+                log = System.IO.File.ReadAllText("log.txt");
+            }
+        }
+
+        private void EMailSendServiceClass_Action(string message)
+        {
+            SetLog(log+DateTime.Now + ":" + message + "\r\n");
+            Console.WriteLine(DateTime.Now + ":" + message + "\r\n");
+        }
 
         public void Send(MailMessage message)//, string password, int port)
         {
             try
             {
-                //Password = password;
-                //Port = port;
-                //var fromAddress = new MailAddress("geekbrains2021@gmail.com", "Tester");
-                //var toAddress = new MailAddress("geekbrains2021@gmail.com", "Tester");
-                //Преобазование из Windows-1251 в UTF-8
                 string subject = message.Subject;// tbSubject.Text;
-                //string fio = "from me";
-                //rtbBody.SelectAll();
                 string password = System.IO.File.ReadAllText("C:\\temp\\1.txt");
                 int port=587;
                 string body = message.Body;
@@ -57,6 +114,9 @@ namespace Mailer.Model
                 //MessageBox.Show("Message has sent");
                 //Debug.WriteLine("Message has sent");
                 Action?.Invoke("Message has sent");
+                Console.WriteLine("From:"+message.From);
+                Console.WriteLine("To:"+message.To);
+                Console.WriteLine("Body:"+message.Body);
             }
             catch (Exception ex)
             {
@@ -70,7 +130,9 @@ namespace Mailer.Model
 
         public bool Check(string body)
         {
-            return !(String.IsNullOrEmpty(body));
+            return !(string.IsNullOrEmpty(body));
         }
+
+
     }
 }

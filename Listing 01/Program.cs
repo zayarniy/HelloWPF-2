@@ -33,6 +33,7 @@ class DemoTask
 
         // Run the task. 
         tsk.Start();//запускаем задачу в отдельном потоке
+        
 
         // Keep Main() alive until MyTask() finishes. 
         for (int i = 0; i < 60; i++)

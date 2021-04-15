@@ -36,13 +36,7 @@ namespace Listing_7
             do
             {
                 Count++;
-                if (currentName != Thrd.Name)
-                {
-                    currentName = Thrd.Name;
-          //          Console.WriteLine("In " + currentName);
-                }
-
-            } while (stop == false && Count < 10000000);
+            } while (stop == false && Count < 2000000000);
             stop = true;
 
             Console.WriteLine(Thrd.Name + " terminating.");
@@ -61,9 +55,9 @@ namespace Listing_7
             mt2.Thrd.Priority = ThreadPriority.Lowest;
 
             // Start the threads. 
+            mt2.Thrd.Start();
             mt1.Thrd.Start();
            // mt1.Thrd.Join(); //- для тех кто не до конца понял Join - можно раскомментировать эту строчку
-            mt2.Thrd.Start();
 
             mt1.Thrd.Join();
 

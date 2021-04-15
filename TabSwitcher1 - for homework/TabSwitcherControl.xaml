@@ -17,7 +17,8 @@
             <Button x:Name="btnNext" Width="115" Margin="0">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="3,0,0,0" Text="{Binding NextText,ElementName=root}" />
+                        <!-- Это ученика дома реализовать-->
+                     <!--   <TextBlock Margin="3,0,0,0" Text="{Binding NextText,ElementName=root}" />-->
                         <Image Source="Images/Move Next (Arrow) Green64.png" Width="30" Height="16" Margin="5,0,0,0" />
                     </StackPanel>
                 </Button.Content>

@@ -106,7 +106,7 @@ namespace MyExtendableApp
                 DisplayCompanyData(t);
             }
             return foundSnapIn;
-        }
+        } 
 
         private static void DisplayCompanyData(Type t)
         {

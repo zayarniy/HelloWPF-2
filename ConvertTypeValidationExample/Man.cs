@@ -41,6 +41,8 @@ namespace ConvertTypeValidationExample
 
         public int Field5 { get; set; }
 
+        public int Field6 { get; set; }
+
         public string this[string columnName]
         {
             get

@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:DOCKPANEL"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <DockPanel VerticalAlignment="Bottom" LastChildFill="True">
-        <Button  Content="Button" DockPanel.Dock="Top"/>
-        <Button  Content="Button" DockPanel.Dock="Bottom"/>
-        <Button  Content="Button" DockPanel.Dock="Right"/>
-        <Button  Content="Button" DockPanel.Dock="Left"/>
+    <DockPanel VerticalAlignment="Stretch" LastChildFill="True">
+        <Button  Content="Top" DockPanel.Dock="Top"/>
+        <Button  Content="Bottom" DockPanel.Dock="Bottom"/>
+        <Button  Content="Right" DockPanel.Dock="Right"/>
+        <Button  Content="Left" DockPanel.Dock="Left"/>
         <Calendar/>
     </DockPanel>
 </Window>

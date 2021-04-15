@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace FunWithCSharpAsync
 {
@@ -32,19 +22,23 @@ namespace FunWithCSharpAsync
         }
 
         private async void btnButton_Click2(object sender, RoutedEventArgs e)
-        {
+        {            
             //Имена асинхронных рекомендуется заканчивать на Async, так как они возвращают объект Task
-            tbText2.Text =await DoWorkAsync();
+
+            string content = btnButton2.Content.ToString() ;
+            btnButton2.Content = "Button pressed";
+            tbText2.Text =await DoWorkAsync2();
             /*
             Ключевое слово await отвечает за извлечение внутреннего возвращаемого значения, содержащегося в объекте Task. Из-за отсутствия этого ключевого слова возникает несовпадение типов. 
             */
+            btnButton2.Content = content;
 
         }
 
         //Некоторая работа
         private string DoWork()
         {
-            //tbText.Text = "Do work";
+            btnButton.Content = "Do work";
             Thread.Sleep(10000);
             return "Done with work!";
         }
@@ -63,9 +57,9 @@ namespace FunWithCSharpAsync
                 return DoWork();
             });
             //другой способ создание и запуск задачи
-            Task<string> task = new Task<string>(DoWork);
-            task.Start();
-            return task;
+            //Task<string> task = new Task<string>(DoWork);
+            //task.Start();
+            //return task;
 
         }
 

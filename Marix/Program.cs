@@ -167,8 +167,8 @@ namespace Marix
     {
         static void Main(string[] args)
         {
-            int N = 1000;
-            int M = 1000;
+            int N = 500;//500
+            int M = 500;
             int Count = 1;
 
             Matrix A=new Matrix(name:"Matrix A",fill:MatrixFill.Value,value:2,n:N,m:M),

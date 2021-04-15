@@ -15,7 +15,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LogicTree"
         mc:Ignorable="d"
-        Title="LogicTree" Height="335.818" Width="800" Background="LightGreen" Foreground="White" SizeToContent="WidthAndHeight" FontSize="30" FontStyle="Italic">
+        Title="LogicTree" FontSize="20" FontStyle="Italic"  Height="335.818" Width="800" Background="LightGreen" Foreground="White" SizeToContent="WidthAndHeight">
     <StackPanel>
         <Label FontWeight="Bold" FontSize="20" Foreground="White">C#.Level 3</Label>
         <Label>GeekBrains</Label>
@@ -26,7 +26,7 @@
         </ListBox>
         <!-- StackPanel наследовало свойство FontSize от Window-->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" TextElement.FontSize="30" TextElement.FontStyle="Normal">
-            <Button MinWidth="75" Margin="10">Help</Button>
+            <Button MinWidth="75" Margin="10" FontSize="20">Help</Button>
             <Button MinWidth="75" Margin="10">0K</Button>
         </StackPanel>
         <StatusBar>Moscow, 2020</StatusBar>

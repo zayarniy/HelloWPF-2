@@ -39,7 +39,7 @@ namespace LateBindingApp
         #region Invoke method with no args
         static void CreateUsingLateBinding(Assembly asm)
         {
-            try
+            try 
             {
                 // Get metadata for the MyExternalClass type.
                 Type myClass = asm.GetType("ClassLibrary.MyExternalClass");

@@ -72,9 +72,12 @@
         </Grid>
         </TabItem>
         <TabItem Header="Reports">
-            <WindowsFormsHost x:Name="wfhFormsHost">
+            <StackPanel>
+            <WindowsFormsHost x:Name="wfhFormsHost" Height="200" Width="500" Margin="44,0,42,0">
                 <report:ReportViewer x:Name="ReportViewer"/>
             </WindowsFormsHost>
+                <Button x:Name="btnSavePDFPerort" Click="btnSavePDFPerort_Click">Save PDF</Button>
+            </StackPanel>
         </TabItem>
 
     </TabControl>

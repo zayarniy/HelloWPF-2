@@ -19,7 +19,7 @@ namespace Password_MVVM.ViewModel
         bool access;
         int attemptCount = 0;
 
-        static public bool GetAccess { get; private set; } = false;
+        static public bool GetAccess { get=>Password_MVVM.Model.AccessToApp.Access; } 
 
         #region Публичное свойство для привязки "кол-во попыток"
         public int AttemptCount
@@ -53,7 +53,8 @@ namespace Password_MVVM.ViewModel
             Access = Accounts.Checks(Account);
             if (Access)
             {
-                GetAccess = true;
+                Model.AccessToApp.Access = true;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Access"));
                 //Mailer.MainWindow mailerWindow = new Mailer.MainWindow();
             }
 
@@ -102,6 +103,16 @@ namespace Password_MVVM.ViewModel
             }
         }
         
+        public ICommand ClickExit
+        {
+            get
+            {
+                return new DelegateCommand((obj) =>
+                {
+                    (obj as MainWindow).Close();
+                }, (obj) => true);
+            }
+        }
 
         #region Публичное свойство для привязки
         public bool Access

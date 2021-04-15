@@ -1,4 +1,5 @@
 ﻿using System;
+//Пример создания собственного атрибута DescriptionAttribue
 /*
     Ключевые моменты, касающиеся атрибутов .NET:
 •	атрибуты представляют собой классы, производные от System.Attribute;
@@ -17,7 +18,7 @@ namespace OurAttribute
         public string Description { get; set; }
         public DescriptionAttribute(string description) => Description = description;
         public DescriptionAttribute(){ Description = "Empty Info"; }
-    }
+    } 
 
     #region Наложение ограничений на использование атрибута
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Delegate)]

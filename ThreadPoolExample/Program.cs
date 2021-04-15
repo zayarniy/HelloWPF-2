@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 //**** Пока не показывать ****
 namespace ThreadPoolExample
@@ -11,10 +7,15 @@ namespace ThreadPoolExample
     public class Printer
     {
         public string Name { get; set; }
+        object obj = new object();
 
         public void PrintNumbers()
         {
-            for (int i = 0; i < 10; i++) Console.WriteLine(i);
+            lock (obj)
+            {
+                for (int i = 0; i < 10; i++) Console.Write(i);
+                Console.WriteLine();
+            }
         }
     }
 
@@ -26,12 +27,15 @@ namespace ThreadPoolExample
             Console.WriteLine("Main thread started. ThreadID = {0}",
             Thread.CurrentThread.ManagedThreadId);
             Printer p = new Printer();
-            WaitCallback workItem = new WaitCallback(PrintTheNumbers);
-            // nocTaBMTb b oueperib MeTon recflTb pa3. for (int i = 0; i < 10; i++)
-            {
-                ThreadPool.QueueUserWorkItem(workItem, p);
-            }
+            WaitCallback workItem = new WaitCallback(PrintTheNumbers);                        
+            ThreadPool.QueueUserWorkItem(workItem, p);
+            ThreadPool.QueueUserWorkItem(workItem, p);
+            ThreadPool.QueueUserWorkItem(workItem, p);
+            ThreadPool.QueueUserWorkItem(workItem, p);
+            ThreadPool.QueueUserWorkItem(workItem, p);
             Console.WriteLine("All tasks queued");
+            //Thread.Sleep(10000);
+            Console.WriteLine("Main thread ending");
             Console.ReadLine();
         }
 

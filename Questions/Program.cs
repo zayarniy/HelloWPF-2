@@ -10,7 +10,7 @@ namespace Questions
 
     class Interview
     { 
-    //Существуют классы:
+    //Существуют классы: 
     public class ClassA
     {
         public virtual void ClassMethod()
@@ -32,6 +32,8 @@ namespace Questions
         public void Code1()
         {
             //ClassB object1 = new ClassA();//Ошибка приведения типов
+            
+            
             ClassB object1 = (ClassB)new ClassA();//Исправление
             object1.ClassMethod();
             ClassB object2 = new ClassB();
@@ -39,7 +41,7 @@ namespace Questions
             ClassA object3 = new ClassB();
             object3.ClassMethod();
         }
-        #endregion
+        #endregion 
 
         #region Задача 2
         /// <summary>
@@ -52,6 +54,8 @@ namespace Questions
             bool c = !a || (!!a && !b) && (a || b);
             #region Ответ
             c = !true || (!!true && !false) && (true || false);
+            c = false || (true && true) && (true || false);
+            c = true;
             bool c1 = !a || !b;//Упрощенное выражение c
             #endregion
             Console.Write(c);
@@ -83,14 +87,14 @@ namespace Questions
         public static void Question1()
         {
             int i = 1;
-            object obj = i;
+            object obj = i;//inboxing
             ++i;
             Console.WriteLine(i);
             Console.WriteLine(obj);
-            Console.WriteLine((short)obj);
+            //Console.WriteLine((short)obj);//unboxing
 
             #region Ответ
-            Console.WriteLine((short)(int)obj);
+            Console.WriteLine((short)(int)obj);//unboxing in int =>short
             #endregion
         }
         #endregion
@@ -103,8 +107,9 @@ namespace Questions
 
         static void Main(string[] args)
         {
-            Interview interview = new Interview();
-            interview.Code2();
+            //Interview interview = new Interview();
+            //interview.Code3();
+            Interview.Question1();
             Console.ReadKey();
 
         }

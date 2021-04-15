@@ -21,16 +21,14 @@
         <Button Background="Aqua" Canvas.Top="0" Canvas.Right="0">
             Canvas.Top="0" Canvas.Right="0"
         </Button>
-        <Button Background="Yellow" Canvas.Bottom="18" Canvas.Right="18" Panel.ZIndex="4">
+        <Button Background="Yellow" Canvas.Bottom="18" Canvas.Right="18" Panel.ZIndex="7">
             Canvas.Bottom="18" Canvas.Right="18"
         </Button>
         <Button Background="DarkMagenta" Canvas.Bottom="0" Canvas.Left="0">
             Canvas.Bottom="0" Canvas.Left="0"
         </Button>
-        <Button Background="HotPink" Canvas.Bottom="0" Canvas.Right="0" Panel.ZIndex="2">
+        <Button Background="HotPink" Canvas.Bottom="0" Canvas.Right="0" Panel.ZIndex="6">
             Canvas.Bottom="0" Canvas.Right="0"
         </Button>
-
-
     </Canvas>
 </Window>

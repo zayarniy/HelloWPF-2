@@ -28,6 +28,7 @@ namespace Listing_2
         {
             Count = 0;
             Thrd = new Thread(this.Run);
+            Thrd.IsBackground = true;
             Thrd.Name = name; // set the name of the thread 
             Thrd.Start(); // start the thread 
         }
@@ -39,11 +40,11 @@ namespace Listing_2
 
             do
             {
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
                 Console.WriteLine("In " + Thrd.Name +
                                   ", Count is " + Count);
                 Count++;
-            } while (Count < 10);
+            } while (Count < 20);
 
             Console.WriteLine(Thrd.Name + " terminating.");
         }
@@ -66,7 +67,7 @@ namespace Listing_2
 
             Console.WriteLine("Main thread ending.");
 
-            Console.Read();
+            //Console.Read();
 
         }
     }

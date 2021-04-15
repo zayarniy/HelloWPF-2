@@ -1,6 +1,7 @@
-﻿Imports CommonSnappableTypes
+﻿'DLL файл лежит в VbSnapIn
+Imports CommonSnappableTypes
 
-<CompanyInfo(CompanyName:="Chucky's Software", CompanyUrl:="www.ChuckySoft.com")> _
+<CompanyInfo(CompanyName:="Chucky's Software", CompanyUrl:="www.ChuckySoft.com")>
 Public Class VbSnapIn
     Implements IAppFunctionality
 

@@ -26,10 +26,10 @@ namespace COMBOBOX
         }
 
 
-        private void ComboBoxItem_Drop(object sender, DragEventArgs e)
-        {
-            MessageBox.Show(cbComboBox.SelectedItem + " " + cbComboBox.SelectedIndex);
-        }
+        //private void ComboBoxItem_Drop(object sender, DragEventArgs e)
+        //{
+        //    MessageBox.Show(cbComboBox.SelectedItem + " " + cbComboBox.SelectedIndex);
+        //}
 
         private void ComboBoxItem_Drop(object sender, EventArgs e)
         {
@@ -38,7 +38,7 @@ namespace COMBOBOX
 
         private void cbComboBox_DropDownOpened(object sender, EventArgs e)
         {
-            MessageBox.Show(cbComboBox.SelectedItem + " " + cbComboBox.SelectedIndex);
+            MessageBox.Show(cbComboBox.SelectedItem + "  " + cbComboBox.SelectedIndex+"  "+cbComboBox.SelectedValue);
         }
 
     }

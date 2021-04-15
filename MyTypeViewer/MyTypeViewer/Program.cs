@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 
 //Пример демонстрирующий рефлексию. Описание любого типа
+//После запуска введите тип
 namespace MyTypeViewer
 {
     class Program
@@ -12,7 +13,7 @@ namespace MyTypeViewer
             Console.WriteLine("***** Welcome to MyTypeViewer *****");
             string typeName = "";
 
-            do
+            do 
             {
                 Console.WriteLine("\nEnter a type name to evaluate");
                 Console.Write("or enter Q to quit: ");

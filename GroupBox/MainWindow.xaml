@@ -16,7 +16,10 @@
         </GroupBox>
         <GroupBox>
             <GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="2groups.ico" Width="20" ></Image>
                 <Button>Choice</Button>
+                </StackPanel>
             </GroupBox.Header>
             <StackPanel>
                 <CheckBox>First option</CheckBox>

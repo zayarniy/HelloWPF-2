@@ -4,10 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Mailer"
-        xmlns:user="clr-namespace:FileInputBoxExample;assembly=FileInputBoxExample"        
+        xmlns:viewmodel="clr-namespace:Mailer.ViewModel"
+        xmlns:TabSwitcherControl="clr-namespace:TabSwitcher1;assembly=TabSwitcher1"      
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:sys1="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Рассыльщик" Height="500" Width="800" Icon="/Images/mailreminder.png">
+        Title="Рассыльщик" Height="500" Width="800" MaxHeight="500" MaxWidth="800" MinHeight="500" MinWidth="800" Icon="/Images/mailreminder.png">
+    <Window.DataContext>
+        <viewmodel:ViewModel/>
+    </Window.DataContext>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="39*"/>
@@ -19,7 +25,7 @@
             </MenuItem>
             <MenuItem Header="Помощь"/>
         </Menu>
-        <TabControl Grid.Row="1" SelectedIndex="0" x:Name="tabControl" TabStripPlacement="Right">
+        <TabControl Grid.Row="1" SelectedIndex="{Binding TabControlIndex}" x:Name="tabControl" TabStripPlacement="Right">
             <TabItem>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
@@ -91,7 +97,7 @@
                 </Grid>
 
             </TabItem>
-  <TabItem x:Name="tabInstant">
+  <TabItem x:Name="tabInstant" IsSelected="True">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <Image Source="/Images/outbox1.png" Width="20" HorizontalAlignment="Left"/>
@@ -110,10 +116,11 @@
                     <Label Content="To"/>
                     <ComboBox x:Name="cbTo" ItemsSource="{Binding ToList}" Text="{Binding To}">
                     </ComboBox>
-                    <Button Command="{Binding Send}"  x:Name="btnSend" Width="auto" FontWeight="Medium" Content="Отправить немедленно" Click="btnSendAtOnce_Click"/>
+                    <Button   x:Name="btnSend" Width="auto" FontWeight="Medium" Content="Отправить немедленно" Command="{Binding SendAtOnce}"/>
+                    <Button   x:Name="btnAddNewMail" Width="auto" FontWeight="Medium" Content="Добавить в планировщик" Command="{Binding AddNewMail}"/>
                 </StackPanel>
             </TabItem>
-            <TabItem x:Name="tabPlanner">
+            <TabItem x:Name="tabPlanner" IsSelected="False">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <Image Source="/Images/schedule.ico" Width="20" HorizontalAlignment="Left"/>
@@ -134,17 +141,17 @@
                     </Grid.RowDefinitions>
                     <StackPanel>
                         <local:TimePicker x:Name="tbTime" />
-                        <TextBlock Text="{Binding ElementName=tbTime, Path=Date}"/>
+                        <TextBlock Background="AliceBlue" HorizontalAlignment="Stretch" TextAlignment="Center" Text="{Binding ElementName=tbTime, Path=Date}"/>
                     </StackPanel>
-                    <Button x:Name="btnSend2"  Grid.Row="2" HorizontalAlignment="Center"   VerticalAlignment="Top" Width="180" Click="btnSend2_Click" Height="25" Grid.ColumnSpan="2">
+                    <Button x:Name="btnToDoTask" Command="{Binding ToDoTask}" CommandParameter="{Binding ElementName=tbTime,Path=Date}"  Grid.Row="2" HorizontalAlignment="Center"   VerticalAlignment="Top" Width="180" Height="25" Grid.ColumnSpan="2">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Images/clock.png" Width="16" Height="16"/>
-                                <TextBlock Text="Отправить запланированно" VerticalAlignment="Center" />
+                                <TextBlock Text="Запланировать" VerticalAlignment="Center" Width="auto" />
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Button x:Name="btnSendAtOnce" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btnSendAtOnce_Click" Height="25" Grid.ColumnSpan="3" >
+                    <Button x:Name="btnSendAllAtOnce" Command="{Binding SendAllAtOnce}" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" Height="25" Grid.ColumnSpan="3" Width="180">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Images/cache.png"/>
@@ -152,7 +159,14 @@
                             </StackPanel>
                         </Button.Content>
                     </Button>
+                    <DataGrid Grid.Column="1" ItemsSource="{Binding Database.Items}" AutoGenerateColumns="False" MaxHeight="200" Margin="5" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="dgtcDateTime" Binding="{Binding DateTime}" Header="Time" IsReadOnly="True" Width="Auto"/>
+                            <DataGridTextColumn x:Name="dgtcMailMessage" Binding="{Binding MailMessage.Body}" Header="MailMessage" Width="1*"/>
+                            <DataGridCheckBoxColumn x:Name="dgcbcSent" Binding="{Binding Sent}" Header="Sent" Width="Auto"/>
+                        </DataGrid.Columns>
 
+                    </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem>
@@ -166,10 +180,20 @@
                     <Label Content="Сервер:" Width="auto"/>
                     <TextBox Grid.Row="1"  x:Name="tbServer" Width="200" HorizontalAlignment="Left" Text="smtp.yandex.ru"/>
                     <Label Content="Порт:" Width="auto"/>
-                    <TextBox Grid.Row="1" x:Name="tbPort" Width="30" Text="25"/>
+                    <TextBox Grid.Row="1" x:Name="tbPort" Width="30" Text="{Binding Port,Mode=TwoWay,NotifyOnValidationError=True, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}" />
                     <Line></Line>
                     <Label Content="Имя пользователя:" Width="auto"/>
-                    <TextBox Grid.Row="1" x:Name="tbUserName" Width="350" Text="zaazaa@yandex.ru"/>
+<!--                    <TextBox Grid.Row="1" x:Name="tbUserName" Width="350" Text="{Binding Login}"/>-->
+                    <TextBox Grid.Row="1" x:Name="tbUserName" Width="350" >
+                        <TextBox.Text>
+                            <Binding Path="Login" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                <Binding.ValidationRules>
+                                    <viewmodel:EMailValidationRule />
+                                </Binding.ValidationRules>
+                            </Binding>
+
+                        </TextBox.Text>
+                    </TextBox>
                     <Label Content="Пароль:" Width="auto"/>
                     <PasswordBox Grid.Row="1" x:Name="tbPassword" Width="350" PasswordChar="*" Password="12345678"/>
                 </WrapPanel>
@@ -191,14 +215,27 @@
                     </StackPanel>
                 </TabItem.Header>
 
-                <TextBox x:Name="tbLog" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" AcceptsReturn="True" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                <TextBox x:Name="tbLog" Text="{Binding Log}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" AcceptsReturn="True" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
 
             </TabItem>                        
         </TabControl>
-        <StatusBar x:Name="sbStatus" Grid.Row="2">
-            <Label x:Name="lbStatus"/>
-            <!--<TabSwitcher1:TabSwitcherControl x:Name="tscTabSwitcherControl" btnNextClick="tscTabSwitcherControl_btnNextClick" btnPreviousClick="tscTabSwitcherControl_btnPreviousClick"/>
--->
-        </StatusBar>        
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70*"/>
+                <ColumnDefinition Width="30*"/>
+            </Grid.ColumnDefinitions>
+            <StatusBar x:Name="sbStatus" HorizontalAlignment="Stretch"  Grid.Column="0">
+                <Label x:Name="lbStatus"/>
+                <Label x:Name="lbTick" Content="{Binding TickCount}"/>
+            </StatusBar>
+            <TabSwitcherControl:TabSwitcherControl
+                    x:Name="tscTabSwitcherControl" Grid.Column="1" Loaded="tscTabSwitcherControl_Loaded" >
+                <b:Interaction.Triggers>
+                    <b:EventTrigger EventName="btnPreviousClick">
+                        <b:InvokeCommandAction Command="{Binding Path=TabSwitcherPrev}"/>
+                    </b:EventTrigger>
+                </b:Interaction.Triggers>
+            </TabSwitcherControl:TabSwitcherControl>
+        </Grid>
     </Grid>
 </Window>
