@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BUTTON"
         mc:Ignorable="d"
-        Title="Window2" Height="450" Width="800">
+        Title="Window2" Height="250" Width="800">
     <StackPanel>
         <Label>Если флажок CheckBox владеет фокусом, то нажатие клавиши плюс (+) отмечает его, а клавиши минус (-) - сбрасывает! Отметим, что это работает, только если свойство IsThreeState равно false.</Label>
         <CheckBox x:Name="cbChecked" IsChecked="True">Checked</CheckBox>

@@ -1,5 +1,7 @@
 ﻿using System;
 
+//Более сложный пример реализации тестов с банковским аккаунтом
+
 namespace BankAccountNS
 {
     /// <summary>
@@ -36,11 +38,14 @@ namespace BankAccountNS
         //Будем тестировать его
         public void Debit1(double amount)
         {
+            //Проверяем, что если попытка снять больше, чем лежит на счете
             if (amount > m_balance)
             {
+                //вызываем исключение
                 throw new ArgumentOutOfRangeException("amount");
             }
 
+            //Если попытка снять отрицательную сумму - вызываем исключение
             if (amount < 0)
             {
                 throw new ArgumentOutOfRangeException("amount");
@@ -68,6 +73,12 @@ namespace BankAccountNS
             m_balance -= amount; // правильный код
         }
         #endregion
+
+        #region for Test 3,4
+        public const string DebitAmountExceedsBalanceMessage = "Debit amount exceeds balance";
+        public const string DebitAmountLessThanZeroMessage = "Debit amount is less than zero";
+        #endregion
+
 
         #region Version 3 
         public void Debit3(double amount)
@@ -118,18 +129,15 @@ namespace BankAccountNS
 
         public static void Main()
         {
-            BankAccount ba = new BankAccount("Mr. Bryan Walton", 11.99);
+            BankAccount ba = new BankAccount("Mr. Bryan Walton", 1100.99);
 
             ba.Credit(1000);
             ba.Debit1(500);
             ba.Debit2(600);
             ba.Debit3(600);
+            ba.Debit4(600);
             Console.WriteLine("Current balance is ${0}", ba.Balance);
         }
 
-        #region for Test 2,3,4
-        public const string DebitAmountExceedsBalanceMessage = "Debit amount exceeds balance";
-        public const string DebitAmountLessThanZeroMessage = "Debit amount is less than zero";
-        #endregion
     }
 }

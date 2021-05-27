@@ -1,7 +1,7 @@
 ﻿<Window x:Class="DataGrid.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="DataGrid with Inline Content" Height="350" Width="525">
+        Title="DataGrid with Inline Content" Height="150" Width="525">
     <DataGrid IsReadOnly="True" xmlns:local="clr-namespace:DataGrid" xmlns:sys="clr-namespace:System;assembly=mscorlib">
         <!-- Support for showing all genders in the DataGridComboBoxColumn(see below): -->
         <DataGrid.Resources>

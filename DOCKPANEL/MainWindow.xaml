@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DOCKPANEL"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <DockPanel VerticalAlignment="Stretch" LastChildFill="True">
+    <DockPanel VerticalAlignment="Top" LastChildFill="False">
         <Button  Content="Top" DockPanel.Dock="Top"/>
         <Button  Content="Bottom" DockPanel.Dock="Bottom"/>
         <Button  Content="Right" DockPanel.Dock="Right"/>

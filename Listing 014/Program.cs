@@ -41,10 +41,10 @@ class DemoParallelForWithLoopResult
         // Use a parallel ForEach() loop to display the data. 
         //ParallelLoopResult loopResult = Parallel.ForEach(data, DisplayData);
         ParallelLoopResult loopResult =
-                    Parallel.ForEach(data, (v,pls)=>
+                    Parallel.ForEach(data, (value,plstate)=>
                     {
-                        Console.WriteLine($"Value: {v}");
-                        if (v < 0) pls.Break();
+                        Console.WriteLine($"Value: {value}");
+                        if (value < 0) plstate.Break();
                     });
 
          

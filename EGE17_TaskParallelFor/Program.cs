@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 /*
 ЕГЭ 17.
@@ -24,6 +25,7 @@ namespace Task17_EGE
             //        if (k == 1) min = i;
             //    }
             //}
+            
             Parallel.For(20000000000, 40000000000, (i) =>
             {
                 if (i % 7 == 0 && i % 100000 == 0 && i % 13 != 0 && i % 29 != 0 && i % 43 != 0 && i % 101 != 0)

@@ -20,8 +20,6 @@ namespace BankTest
         //{
         //}
 
-
-
         /*
         В этой процедуре мы напишем методы модульного теста для проверки поведения метода Debit класса BankAccount.
     Существует по крайней мере три поведения, которые требуется проверить:
@@ -49,7 +47,7 @@ namespace BankTest
 
             // Assert
             double actual = account.Balance;
-            Assert.AreEqual(expected, actual, 0.01, "Снятие с аккаунта не корректно");
+            Assert.AreEqual(expected, actual, 0.0000001, "Снятие с аккаунта не корректно");
         }
         /*
         Метод очень прост: он создает новый объект BankAccount с начальным балансом, а затем снимает допустимое значение. 
@@ -73,8 +71,8 @@ namespace BankTest
         public void Test2_Debit_WhenAmountIsLessThanZero_ShouldThrowArgumentOutOfRange1()
         {
             // Arrange
-            double beginningBalance = -11.99;
-            double debitAmount = 100.00;
+            double beginningBalance = 110.99;
+            double debitAmount = 200.00;
             BankAccount account = new BankAccount("Mr. Bryan Walton", beginningBalance);
             // Act and assert
             //Ожидается исключение. Оно происходит и это правильно. Исправить заменой на  ArgumentOutOfRangeException

@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:lib="clr-namespace:MyLib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" >
+        Title="MainWindow" Height="150" Width="800" >
     <StackPanel Margin="20" lib:FileInputBox.FileNameChanged="StackPanel_FileNameChanged"><!--пример демонстриующий работу RoutedChaned будет позже-->
-        <lib:FileInputBox x:Name="fibUI" FileNameChanged="fibUI_FileNameChanged"></lib:FileInputBox>
+        <lib:FileInputBox x:Name="fibUI" FileNameChanged="fibUI_FileNameChanged" FileName="C:\Temp\text.txt"></lib:FileInputBox>
 
     </StackPanel>
 </Window>

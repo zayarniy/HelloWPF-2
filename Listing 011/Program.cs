@@ -31,10 +31,9 @@ class DemoParallelFor
 
 
         var sw = new Stopwatch();
-        sw.Restart();
         Console.WriteLine("Main thread starting.");
         data = new int[500000000];//500 млн
-         
+        sw.Restart();
         // Initialize the data using a regular for loop. 
         for (int i = 0; i < data.Length; i++) data[i] = i;
         sw.Stop();

@@ -37,6 +37,7 @@ namespace EntityFrameworkExample
             ReportViewer.Load += ReportViewer_Load;
         }
 
+
         private void ReportViewer_Load(object sender, EventArgs e)
         {
             ReportDataSource reportDataSource = new ReportDataSource();
@@ -109,3 +110,5 @@ namespace EntityFrameworkExample
         }
     }
 }
+
+

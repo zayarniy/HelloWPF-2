@@ -30,12 +30,7 @@
             <TextBox>
                 <TextBox.Text>
                     <!--NotifyOnValidationError - Возвращает или задает значение, указывающее, следует ли вызывать подключенное к Error событие в привязанном объекте.  -->
-                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="False">
-                        <!--
-                        <Binding.ValidationRules>
-                            <DataErrorValidationRule/>
-                        </Binding.ValidationRules>
-                        -->
+                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" ValidatesOnDataErrors="True" NotifyOnValidationError="False">
                     </Binding>
                 </TextBox.Text>
             </TextBox>
@@ -47,7 +42,7 @@
         </DockPanel>
         <DockPanel>
             <TextBlock>StringField - включили проверку</TextBlock>
-            <TextBox Text="{Binding StringField,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, ValidatesOnExceptions=True}"/>
+            <TextBox Text="{Binding StringField,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource TextBoxErrorTemplate}"/>
         </DockPanel>
         <DockPanel>
             <TextBlock>StringField - отключили проверку</TextBlock>

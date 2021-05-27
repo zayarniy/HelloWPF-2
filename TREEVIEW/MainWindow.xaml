@@ -10,7 +10,7 @@
         <TreeView>
             <TreeViewItem Header="Desktop">
                 <TreeViewItem Header="Computer">
-                    ...
+                    <Button Width="60">...</Button>
                 </TreeViewItem>
                 <TreeViewItem Header="Recycle Bin">
                     ...

@@ -32,8 +32,8 @@ namespace MVVMAccess.Model
 
         public Account(string login, string password)
         {
-            this.login = login;
-            this.password = password;
+            this.Login = login;
+            this.Password = password;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

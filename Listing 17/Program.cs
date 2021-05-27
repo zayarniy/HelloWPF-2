@@ -34,7 +34,7 @@ class MyThread
             }
             Console.WriteLine(Thrd.Name + " exiting.");
         }
-        catch
+        catch(ThreadAbortException)
         {
             Console.WriteLine("Exception!");
         }

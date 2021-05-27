@@ -1,56 +1,81 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//Возможно этот код лучше показывать в каком-нибудь Notepad++, чтобы компилятор не подсказывал ошибки
+//Нужно преварительно скрыть все регионы
+using System;
 
 namespace Questions
 {
     #region Задача 1
 
+    
     class Interview
-    { 
-    //Существуют классы: 
-    public class ClassA
     {
-        public virtual void ClassMethod()
-        {
-            Console.Write("ClassA");
-        }
-    }
-    public class ClassB : ClassA
-    {
-        public override void ClassMethod()
-        {
-            Console.Write("ClassB");
-        }
-    }
+        //Существуют класс A: 
+        public class ClassA
+            {
+                public virtual void Method1()
+                {
+                    Console.WriteLine("ClassA");
+                }
+            }
+            //И класс B - наследник класса A:
+            public class ClassB : ClassA
+            {
+                public override void Method1()
+                {
+                    Console.WriteLine("ClassB");
+                }
+            }
 
-        /// <summary>
-        /// Какой вывод получим, выполнив следующий код?
-        /// </summary>
-        public void Code1()
-        {
-            //ClassB object1 = new ClassA();//Ошибка приведения типов
-            
-            
-            ClassB object1 = (ClassB)new ClassA();//Исправление
-            object1.ClassMethod();
+            public void Code1()
+            {
+
+            /// Какое связывание здесь используется (раннее или позднее)?
+            /// Почему здесь ошибка?
+           //ClassB object1 = new ClassA();
+
+            #region Можно ли так исправить?
+            //ClassB object1 = (ClassB)new ClassA();
+            #endregion
+            #region Ответ
+            //Нет, будет ошибка приведения типов
+            #endregion
+            //Какой вывод получим, выполнив следующий код ?
+
+            #region А так?
+            ClassA object1 = new ClassB();
+            #endregion
+            #region Ответ
+            //Да, так как потомок может ссылаться на экземляр наследника
+            #endregion
+            //Какой вывод получим, выполнив следующий код ?Почему?
+            object1.Method1();
+            #region Ответ
+            //Class B
+            #endregion
+            //Какой вывод получим, выполнив следующий код ?Почему?
             ClassB object2 = new ClassB();
-            object2.ClassMethod();
-            ClassA object3 = new ClassB();
-            object3.ClassMethod();
+            object2.Method1();
+            #region Ответ
+            //Class B
+            #endregion
+           
+
+            //Какой вывод получим, выполнив следующий код ?Почему?
+            ClassA object4 = new ClassB();
+            (object4 as ClassA).Method1();
+            #region Ответ
+            //Class B
+            #endregion
+
         }
-        #endregion 
+        #endregion
 
         #region Задача 2
-        /// <summary>
-        /// Логика. Каков результат работы следующего кода?
-        /// </summary>
+        // Логика. Каков результат работы следующего кода?
         public void Code2()
         {
-            bool a = true;
-            bool b = false;
+            bool a = true;//1
+            bool b = false;//0
             bool c = !a || (!!a && !b) && (a || b);
             #region Ответ
             c = !true || (!!true && !false) && (true || false);
@@ -78,22 +103,22 @@ namespace Questions
             //}
 
             #region Ответ
-            //Ни разу, так как alue - не может быть инициализированна null
+            //Ни разу, так как value - не может быть инициализированна null
             #endregion
         }
         #endregion
-        #region Задача 4
-        //Какие проблемы с этим кодом
-        public static void Question1()
+        #region Задача 4        
+        public void Code4()
+        
         {
+            //Какие проблемы с этим кодом
             int i = 1;
             object obj = i;//inboxing
             ++i;
-            Console.WriteLine(i);
-            Console.WriteLine(obj);
             //Console.WriteLine((short)obj);//unboxing
-
-            #region Ответ
+            #region Ответ 1
+            #endregion
+            #region Ответ 2
             Console.WriteLine((short)(int)obj);//unboxing in int =>short
             #endregion
         }
@@ -107,9 +132,9 @@ namespace Questions
 
         static void Main(string[] args)
         {
-            //Interview interview = new Interview();
-            //interview.Code3();
-            Interview.Question1();
+            Interview interview = new Interview();
+            interview.Code4();
+            //Interview.Question1();
             Console.ReadKey();
 
         }

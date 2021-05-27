@@ -27,14 +27,14 @@ class PLINQDemo
         sw.Start();
         // Use a PLINQ query to find the negative values. 
         //var negatives = from val in data.AsParallel()//Non ordered query
-        var negatives = from val in data.AsParallel().AsOrdered()//Ordered query
+        var negatives = from val in data.AsParallel().AsOrdered() //Ordered query
                         where val < 0
                         select val;
          
         foreach (var v in negatives)
             Console.Write(v + " ");
         sw.Stop();
-        Console.WriteLine(sw.ElapsedMilliseconds);
+        Console.WriteLine("Time:"+sw.ElapsedMilliseconds);
         Console.WriteLine();
 
         Console.Read();

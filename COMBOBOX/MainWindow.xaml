@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:COMBOBOX"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="250" Width="800">
     <Canvas>
         <ComboBox x:Name="cbComboBox" Width="200" IsEditable="True" DropDownClosed="cbComboBox_DropDownOpened" >
             <!-- Set Property Items - it's only get, we can't change it by = -->

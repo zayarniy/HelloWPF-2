@@ -1,7 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+using System.Collections.Generic;
+using System.Security.Cryptography;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+//0 1 1 2 3 5 8 ...
 namespace FibonacciTDD
 {
     [TestClass]
@@ -11,6 +13,7 @@ namespace FibonacciTDD
         public void testFibonacci0()
         {
             Assert.AreEqual(0, fib0(0));//Первый тест
+            MD5 md5;            
         }
 
         //В проекте для учеников все делать в методе fib

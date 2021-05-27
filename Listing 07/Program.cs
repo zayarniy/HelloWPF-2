@@ -25,8 +25,8 @@ class DemoTask
     // which is passed to it. 
     static int SumIt(object v)
     { 
-        Console.WriteLine("Wait 6 seconds");
-        Thread.Sleep(6000);
+        Console.WriteLine("Wait 7 seconds");
+        Thread.Sleep(7000);
         int x = (int)v;
         int sum = 0;
 

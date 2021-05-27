@@ -14,7 +14,8 @@
     <StackPanel>
             <TextBlock x:Name="tbText2">Вы сможете печатать после вызова асинхронного метода</TextBlock>
             <Button x:Name="btnButton2" Click="btnButton_Click2">Call method Async</Button>
-    </StackPanel>
+            <Button x:Name="btnButton3" Click="btnButton_Click3">Call method over thread</Button>
+        </StackPanel>
         <TextBox x:Name="tbText" FontSize="35">Попробуйте напечатать здесь</TextBox>
     </StackPanel>
 </Window>

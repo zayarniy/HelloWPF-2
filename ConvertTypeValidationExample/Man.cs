@@ -59,7 +59,9 @@ namespace ConvertTypeValidationExample
                         break;
                     case "Name":
                         //Обработка ошибок для свойства Name
-                        Error = "Нет ошибок";
+                        if ((Name.Length < 3) || (Name.Length > 10))
+                            Error = "Long name";
+                        //Error = "Нет ошибок";
                         Console.WriteLine(Error);
                         break;
                 }

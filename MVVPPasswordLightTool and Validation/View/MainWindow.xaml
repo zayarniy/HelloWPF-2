@@ -13,7 +13,7 @@
             <TextBox.Text>
                 <Binding Path="Account.Login"
                          UpdateSourceTrigger="PropertyChanged"
-                         Mode="OneWayToSource">
+                         Mode="TwoWay">
                     <Binding.ValidationRules>
                         <vm:LoginValidationRule/>
                     </Binding.ValidationRules>

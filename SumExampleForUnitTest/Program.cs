@@ -17,6 +17,18 @@ namespace SumExampleForUnitTest
             return a + b;
         }
 
+
+        public static double SumDouble(double a,double b)
+        {
+            return a + b;
+        }
+
+        public static string SumString(string a,string b)
+        {
+            return a + b;
+        }
+
+
         static void Main(string[] args)
         {
             Console.WriteLine("Демонстрация Unit-тестов в C#.");

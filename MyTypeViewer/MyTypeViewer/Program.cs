@@ -20,7 +20,7 @@ namespace MyTypeViewer
 
                 // Get name of type.
                 typeName = Console.ReadLine();
-
+                //typeName = "System.Collections.Generic.List";
                 // Does user want to quit?
                 if (typeName.Equals("Q",StringComparison.OrdinalIgnoreCase))
                 {
@@ -30,7 +30,7 @@ namespace MyTypeViewer
                 // Try to display type.
                 try
                 {
-                    Type t = Type.GetType(typeName);
+                    Type t = Type.GetType(typeName,true);
                     Console.WriteLine("");
                     ListVariousStats(t);
                     ListFields(t);

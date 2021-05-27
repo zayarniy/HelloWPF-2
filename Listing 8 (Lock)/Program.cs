@@ -27,6 +27,41 @@ class SumArray
             return sum;
         }
     }
+
+
+    
+    public int SumIt2(int[] nums)
+    {
+        bool _lockWasTacken = false;
+        try // lock the entire method  - блокировка метода 
+        {
+            System.Threading.Monitor.Enter(lockOn, ref _lockWasTacken);
+            /*
+            Метод Monitor.Enter принимает два параметра - объект блокировки и значение типа bool, которое указывает на результат блокировки (если он равен true, то блокировка успешно выполнена). Фактически этот метод блокирует объект locker так же, как это делает оператор lock.
+                        */
+            sum = 0; // reset sum  
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                sum += nums[i];
+                Console.WriteLine("Running total for " +
+                       Thread.CurrentThread.Name +
+                       " is " + sum);
+                Thread.Sleep(10); // allow task-switch  
+            }            
+            return sum;
+        }
+        finally
+        {
+            if (_lockWasTacken)
+            {
+                System.Threading.Monitor.Exit(lockOn);
+                /*
+                 С помощью А в блоке try...finally с помощью метода Monitor.Exit происходит освобождение объекта locker, если блокировка осуществлена успешно, и он становится доступным для других потоков.
+                                */
+            }
+        }
+    }
 }
 
 class MyThread

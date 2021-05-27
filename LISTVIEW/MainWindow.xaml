@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISTVIEW"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="150" Width="800">
     <Grid><!--Show DisplayMemberBinding-->
         <!--Элемент управления ListView, производный от ListBox, выглядит и ведет себя, как ListBox, 
         с тем отличием, что по умолчанию установлен режим Extended SelectionMode. 
@@ -14,9 +14,9 @@
         <ListView xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:sys="clr-namespace:System;assembly=mscorlib">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Date"/>
+                    <GridViewColumn Header="Date" Width="auto"/>
                     <GridViewColumn Header="Day of Week"  DisplayMemberBinding="{Binding DayOfWeek}"/>
-                    <GridViewColumn Header="Year" DisplayMemberBinding="{Binding Year}"/>
+                    <GridViewColumn Header="Year" Width="auto" DisplayMemberBinding="{Binding Year}"/>
                 </GridView>
             </ListView.View>
             <sys:DateTime>1/1/2012</sys:DateTime>
