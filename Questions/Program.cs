@@ -1,4 +1,4 @@
-﻿//Возможно этот код лучше показывать в каком-нибудь Notepad++, чтобы компилятор не подсказывал ошибки
+//Возможно этот код лучше показывать в каком-нибудь Notepad++, чтобы компилятор не подсказывал ошибки
 //Нужно преварительно скрыть все регионы
 using System;
 
@@ -29,17 +29,15 @@ namespace Questions
             public void Code1()
             {
 
-            /// Какое связывание здесь используется (раннее или позднее)?
             /// Почему здесь ошибка?
-           //ClassB object1 = new ClassA();
+             ClassB object1 = new ClassA();
 
             #region Можно ли так исправить?
-            //ClassB object1 = (ClassB)new ClassA();
+            ClassB object1 = (ClassB)new ClassA();
             #endregion
             #region Ответ
             //Нет, будет ошибка приведения типов
             #endregion
-            //Какой вывод получим, выполнив следующий код ?
 
             #region А так?
             ClassA object1 = new ClassB();
