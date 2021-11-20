@@ -229,7 +229,7 @@
                 <Label x:Name="lbTick" Content="{Binding TickCount}"/>
             </StatusBar>
             <TabSwitcherControl:TabSwitcherControl
-                    x:Name="tscTabSwitcherControl" Grid.Column="1" Loaded="tscTabSwitcherControl_Loaded" >
+                    x:Name="tscTabSwitcherControl" Grid.Column="1">
                 <b:Interaction.Triggers>
                     <b:EventTrigger EventName="btnPreviousClick">
                         <b:InvokeCommandAction Command="{Binding Path=TabSwitcherPrev}"/>

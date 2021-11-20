@@ -22,7 +22,7 @@ class MyThread
     // This creates a semaphore that allows up to 2 
     // permits to be granted and that initially has 
     // two permits available. 
-    static Semaphore sem = new Semaphore(3, 3);
+    static Semaphore sem = new Semaphore(2, 2);
     /*Его конструктор принимает два параметра: первый указывает, какому числу объектов изначально будет доступен семафор, 
      * а второй параметр указывает, какой максимальное число объектов будет использовать данный семафор.
      * В данном случае у нас только два объекта могут одновременно находиться в библиотеке, 

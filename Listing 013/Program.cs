@@ -40,7 +40,7 @@ class DemoParallelForWithLoopResult
 
         // Parallel transform loop. 
         ParallelLoopResult loopResult =
-                    Parallel.For(0, data.Length, MyTransform);
+                    Parallel.For(0, data.Length,new Action<int, ParallelLoopState>(MyTransform));
 
         // See if the loop ran to completion. 
         if (!loopResult.IsCompleted)

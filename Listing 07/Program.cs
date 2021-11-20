@@ -44,6 +44,8 @@ class DemoTask
         // Construct the first task. 
         //1 пример
         Task<bool> tsk = Task<bool>.Factory.StartNew(MyTask);
+        Task<bool> tsk1 = new Task<bool>(MyTask);
+        tsk1.Start();
 
         //вызывающий процесс окажется блокированным до тех пор, пока не будет получен результат. 
         Console.WriteLine("After running MyTask. The result is " +
@@ -52,7 +54,11 @@ class DemoTask
         // Construct the second task. 
         //Второй пример
         Task<int> tsk2 = Task<int>.Factory.StartNew(SumIt, 3);//Создаем задачу, которая возвращает int
-        
+
+        //Task<int> tsk3 = new Task<int>(SumIt, 3);
+        Task<int> tsk3 = new Task<int>(new Func<object,int>(SumIt), 3);
+        tsk3.Start();
+
         //вызывающий процесс окажется блокированным до тех пор, пока не будет получен результат. 
         
         Console.WriteLine("After running SumIt. The result is " +

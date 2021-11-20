@@ -9,13 +9,13 @@
         xmlns:vm2="clr-namespace:CommandsExample.ViewModel"
         Title="MainWindow" Height="100" Width="85" x:Name="wndMainWindow">
     <Window.DataContext>
-        <vm:ViewModel/>
+        <vm:ViewModel x:Name="MainViewModel"/>
     </Window.DataContext>
     <Window.Resources>
     </Window.Resources>
     <StackPanel>
-        <TextBox x:Name="tbText" Text="Text2"/>
+        <TextBox x:Name="tbText" Text="{Binding Text,Mode=TwoWay}"/>
         <Button Command="{Binding Path=Command1}" CommandParameter="{Binding ElementName=tbText,Path=Text}" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
-     
+        <Button Command="{Binding Path=Command3}" CommandParameter="{Binding ElementName=wndMainWindow, Path=Title}" Content="Button2"/>
     </StackPanel>
 </Window>

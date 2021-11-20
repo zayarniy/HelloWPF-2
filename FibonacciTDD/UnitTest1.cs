@@ -12,8 +12,7 @@ namespace FibonacciTDD
         [TestMethod]
         public void testFibonacci0()
         {
-            Assert.AreEqual(0, fib0(0));//Первый тест
-            MD5 md5;            
+            Assert.AreEqual(0, fib0(0));//Первый тест                       
         }
 
         //В проекте для учеников все делать в методе fib
@@ -92,6 +91,14 @@ namespace FibonacciTDD
             return fib4(n - 1) + fib4(n-2);//3. А вторая единица в сумме - на самом деле fib(n-2)
         }
         //5. Это и есть функция вычисления последовательности Фибоначчи целиком и полностью разработанная в рамках методики TDD
-
+        [TestMethod]
+        public void testFibonacci5()//ошибка!
+        {
+            //Описываем словарь, где ключ - это N, а значение - это результат
+            Dictionary<int, int> cases = new Dictionary<int, int>()
+            { { 0, 0 }, { 1, 1 },{2,1 },{3,2 },{4,3 },{5,5 },{6,8 } };
+            foreach (var @case in cases)
+                Assert.AreEqual(@case.Value, fib4(@case.Key));
+        }
     }
 }

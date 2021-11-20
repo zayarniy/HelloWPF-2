@@ -44,5 +44,18 @@ namespace MVVMAccess.ViewModel
                 return new DelegateCommand(Execute, CanExecute);
             }
         }
+
+        public ICommand ClickClearLogin
+        {
+            get
+            {
+                return new DelegateCommand(o =>
+                {
+                    Account.Login = "";
+                    Account.Password = "";
+                }
+                , can=>true);
+            }
+        }
     }
 }

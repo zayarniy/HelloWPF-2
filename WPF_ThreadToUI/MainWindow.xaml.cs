@@ -26,7 +26,7 @@ namespace WPF_ThreadToUI
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click1(object sender, RoutedEventArgs e)
         {
             Pressed(btnButton1);
         }
@@ -37,12 +37,15 @@ namespace WPF_ThreadToUI
             Thread thread;
             thread = new Thread(new ParameterizedThreadStart(Pressed));
             thread.Start(btnButton2);//Attempt to access to UI thread over other thread
+            //btnButton2.Content = "Pressed";
         }
 
         private void Button_Click3(object sender, RoutedEventArgs e)
         {
             //Work, but whatever freeze
-            PressedOverDispatcher(btnButton3);
+            Thread thread=new Thread(new ParameterizedThreadStart(PressedOverDispatcher));
+            thread.Start(btnButton3);
+            btnButton3.Content = "Thread started";
         }
 
         void Pressed(object btn)
@@ -56,6 +59,31 @@ namespace WPF_ThreadToUI
             (btn as Button).Dispatcher.Invoke(()=>(btn as Button).Content = "Pressed");
         }
 
+        private async void Button_Click4(object sender, RoutedEventArgs e)
+        {
+            btnButton4.Content = "Press me over Task (work)";
+            await PressedOverDispatcherAndTask(btnButton4);
+
+        }
+
+        Task PressedOverDispatcherAndTask(Button btn)
+        {
+            Task task = new Task(() =>
+            {
+                Thread.Sleep(5000);
+                btn.Dispatcher.Invoke(()=>btn.Content = "Pressed");
+            });
+            task.Start();            
+            return task;
+            return Task.Factory.StartNew(() =>
+                            {
+                                Thread.Sleep(5000);
+                                btn.Dispatcher.Invoke(() => btn.Content = "Pressed");
+                            });
+
+        }
+
+
         //private async void Button_Click4(object sender, RoutedEventArgs e)
         //{
         //    await PressedOverDispatcher(btnButton3);
@@ -66,25 +94,5 @@ namespace WPF_ThreadToUI
         //    //    });
         //    //task.Start();
         //}
-
-        private async void Button_Click4(object sender, RoutedEventArgs e)
-        {
-            btnButton4.Content = "Press me over Task (work)";
-            await PressedOverDispatcherAndTask(btnButton4);
-
-        }
-
-        Task PressedOverDispatcherAndTask(Button btn)
-        {
-            System.Threading.Tasks.Task task = new Task(() =>
-            {
-                Thread.Sleep(5000);
-                btn.Dispatcher.Invoke(()=>btn.Content = "Pressed");
-            });
-            task.Start();
-            return task;
-
-        }
-
     }
 }

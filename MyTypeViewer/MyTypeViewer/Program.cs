@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-
+ 
 //Пример демонстрирующий рефлексию. Описание любого типа
 //После запуска введите тип
 namespace MyTypeViewer
@@ -16,16 +16,16 @@ namespace MyTypeViewer
             do 
             {
                 Console.WriteLine("\nEnter a type name to evaluate");
-                Console.Write("or enter Q to quit: ");
+                Console.Write("or enter Q to quit(System.Int32 by default): ");
 
                 // Get name of type.
                 typeName = Console.ReadLine();
-                //typeName = "System.Collections.Generic.List";
                 // Does user want to quit?
                 if (typeName.Equals("Q",StringComparison.OrdinalIgnoreCase))
                 {
                     break;
                 }
+                if (typeName=="") typeName = "System.Int32";
 
                 // Try to display type.
                 try

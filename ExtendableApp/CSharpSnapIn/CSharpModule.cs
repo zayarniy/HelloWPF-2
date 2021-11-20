@@ -12,4 +12,13 @@ namespace CSharpSnapIn
             Console.WriteLine("You have just used the C# snap in!");
         }
     }
+
+    [CompanyInfo(CompanyName = "C#-3", CompanyUrl = "www.GeekBrains.ru")]
+    public class CSharpModule2 : IAppFunctionality
+    {
+        void IAppFunctionality.DoIt()
+        {
+            Console.WriteLine("Вы используете оснастку на C#!");
+        }
+    }
 } 

@@ -42,7 +42,7 @@ namespace ThreadPoolExample
 
             Printer p = new Printer();
             WaitCallback workItem = new WaitCallback(PrintTheNumbers);
-            WaitCallback workItem2 = new WaitCallback(PrintTheNumbers);                
+            WaitCallback workItem2 = new WaitCallback(PrintTheNumbers);               
             ThreadPool.QueueUserWorkItem(workItem, p);
             ThreadPool.QueueUserWorkItem(workItem2, p);
             ThreadPool.QueueUserWorkItem(workItem2, p);

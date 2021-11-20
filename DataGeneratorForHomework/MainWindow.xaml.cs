@@ -33,12 +33,12 @@ namespace DataGeneratorForHomework
         //    tbStatus.Text = "Done";
         //}
 
-        private void btnStart_Click(object sender, RoutedEventArgs e)
+        private async void btnStart_Click(object sender, RoutedEventArgs e)
         {
             //dataGenerator.Generate();
             //int i = 0;
             tbStatus.Text = "Working";
-            Task.Factory.StartNew(() => {
+            await Task.Factory.StartNew(() => {
             Parallel.For(0, dataGenerator.Count, (index) =>
              {
                  try

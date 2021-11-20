@@ -101,5 +101,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TabSwitcher\100. TabSwitcher %28from manual%29.csproj">
+      <Project>{E789DDBF-4C8C-4B19-A939-0D2D70B3F153}</Project>
+      <Name>100. TabSwitcher %28from manual%29</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

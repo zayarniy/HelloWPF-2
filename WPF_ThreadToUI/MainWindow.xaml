@@ -8,7 +8,7 @@
         Title="MainWindow" Height="250" Width="600" FontSize="20">
     <StackPanel>
         <TextBlock>Нажмите на кнопку и попробуйте подвигать окном</TextBlock>
-        <Button Content="Press me" Name="btnButton1" Click="Button_Click"></Button>
+        <Button Content="Press me" Name="btnButton1" Click="Button_Click1"></Button>
         <Button Content="Press me over thread (don't work)" Name="btnButton2" Click="Button_Click2"></Button>
         <Button Content="Press me over thread (work)" Name="btnButton3" Click="Button_Click3"></Button>
         <Button Content="Press me over Task (work)" Name="btnButton4" Click="Button_Click4"></Button>

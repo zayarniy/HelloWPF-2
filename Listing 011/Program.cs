@@ -30,7 +30,7 @@ class DemoParallelFor
     {
 
 
-        var sw = new Stopwatch();
+        Stopwatch sw = new Stopwatch();
         Console.WriteLine("Main thread starting.");
         data = new int[500000000];//500 млн
         sw.Restart();

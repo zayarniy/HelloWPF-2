@@ -46,7 +46,8 @@ class DemoParallel
          
         #region Example 2 (more simple)
         //ParallelOptions parallel = new ParallelOptions();
-        Parallel.Invoke(Method1, Method2);
+        
+        Parallel.Invoke(Method1, Method2);        
         #endregion
         Console.WriteLine("Main thread ending.");
 

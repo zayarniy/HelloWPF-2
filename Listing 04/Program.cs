@@ -48,7 +48,7 @@ class DemoTask
         
         Console.WriteLine("Main thread ending.");
 
-        Console.ReadKey();
+        //Console.ReadKey();
 
     }
 }

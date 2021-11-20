@@ -22,7 +22,7 @@ namespace ConvertTypeValidationExample
     {
 
        
-        public Man Man { get; set; } = new Man() { Field2 = 25, Name = "Ivan" };
+        public Man Man { get; set; } = new Man() { Field2 = 25 };
      
         public MainWindow()
         {
@@ -46,7 +46,7 @@ namespace ConvertTypeValidationExample
         //Событие ErrorEvent является маршрутизируемым событием
         //Происходит при возникновении ошибки проверки в связанном элементе, 
         //но только для привязок со значением NotifyOnValidationError, равным true.
-        private void TextBox_Error(object sender, ValidationErrorEventArgs e)
+        private void Field5_Error(object sender, ValidationErrorEventArgs e)
         {
             if (e.Action == ValidationErrorEventAction.Added)
             {
@@ -58,6 +58,21 @@ namespace ConvertTypeValidationExample
                 Console.WriteLine("Отключили событие");
                 ((Control)sender).ToolTip = "";
             } 
+
+        }
+
+        private void Field3_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+            {
+                Console.WriteLine(sender);
+                ((Control)sender).ToolTip = e.Error.ErrorContent.ToString();
+            }//если ValidationErrorEventAction.Removed
+            else
+            {
+                Console.WriteLine("Отключили событие");
+                ((Control)sender).ToolTip = null;
+            }
 
         }
     }

@@ -13,7 +13,7 @@ class DemoTask
     static void MyTask()
     {
         Console.WriteLine("MyTask() #" + Task.CurrentId + " starting");
-
+        Console.WriteLine("Thread ID:{0}", Thread.CurrentThread.ManagedThreadId);
         for (int count = 0; count < 10; count++)
         {
             Thread.Sleep(500);

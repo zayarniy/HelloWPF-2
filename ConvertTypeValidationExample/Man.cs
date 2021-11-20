@@ -18,12 +18,12 @@ namespace ConvertTypeValidationExample
     public class Man : IDataErrorInfo
     {
 
-        public string Name { get; set; }
+        public string Name { get; set; } = "Длина больше 2, но меньше 10";
 
         public int age1;
         public int Field0 { get; set; }
 
-        string stringField;
+        string stringField="Длина должна быть меньше 6";
         public string StringField
         {
             get { return  stringField; }
@@ -43,7 +43,7 @@ namespace ConvertTypeValidationExample
 
         public int Field6 { get; set; }
 
-        public string this[string columnName]
+        public string this[string columnName]//Реализация интерфейса IDataErrorInfo 
         {
             get
             {
@@ -59,8 +59,10 @@ namespace ConvertTypeValidationExample
                         break;
                     case "Name":
                         //Обработка ошибок для свойства Name
-                        if ((Name.Length < 3) || (Name.Length > 10))
+                        if (Name.Length > 10)
                             Error = "Long name";
+                        if (Name.Length < 3)
+                            Error = "Short name";
                         //Error = "Нет ошибок";
                         Console.WriteLine(Error);
                         break;

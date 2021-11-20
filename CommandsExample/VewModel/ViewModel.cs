@@ -14,6 +14,7 @@ namespace CommandsExample.ViewModel
         //private Commands command;
 
 
+        public string Text { get; set; } = "Text";
 
         #region Вариант 1
         public DelegateCommand Command1
@@ -33,11 +34,27 @@ namespace CommandsExample.ViewModel
 
         bool CanClick(object o)
         {
+
+           // return Text.Contains("t");
+
             if (o != null)
                 return (o as string).Contains("t");
             else return false;
         }
+        bool CanClick2(object o)
+        {
+            return true;
+        }
 
+
+        public DelegateCommand Command3
+        {
+            get
+            {
+                return new DelegateCommand(Execute, CanClick2);
+            }
+
+        }
 
         #endregion
 

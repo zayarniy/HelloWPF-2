@@ -34,7 +34,7 @@ namespace Questions
            //ClassB object1 = new ClassA();
 
             #region Можно ли так исправить?
-            //ClassB object1 = (ClassB)new ClassA();
+            //ClassB object1 = (new ClassA() as ClassB);
             #endregion
             #region Ответ
             //Нет, будет ошибка приведения типов
@@ -72,7 +72,7 @@ namespace Questions
 
         #region Задача 2
         // Логика. Каков результат работы следующего кода?
-        public void Code2()
+        public void Code2()//Алгебра логики
         {
             bool a = true;//1
             bool b = false;//0
@@ -98,7 +98,7 @@ namespace Questions
             //value = 10;
             //while (value > 0)
             //{
-            //    Console.WriteLine(a);
+            //    Console.WriteLine(value);
             //    value--;
             //}
 

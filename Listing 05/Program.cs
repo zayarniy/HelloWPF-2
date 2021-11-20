@@ -18,10 +18,12 @@ class DemoLambdaTask
     static void Main()
     {
 
+        Console.WriteLine("CPU:"+Environment.ProcessorCount);
         Console.WriteLine("Main thread starting.");
 
         // The following use a lambda expression to define a task. 
-        Task tsk = Task.Factory.StartNew(delegate () {
+        Task tsk = Task.Factory.StartNew(
+            delegate () {
             Console.WriteLine("Task #{0} starting", Task.CurrentId);
 
             for (int count = 0; count < 10; count++)
@@ -65,9 +67,9 @@ class DemoLambdaTask
         Console.WriteLine("Complete task ID:"+task);
         // Dispose of tsk. 
         tsk.Dispose();//Это не обязательно для простых задач, но желательно, для объемных        
-        //tsk2.Dispose();//Exception if tsk2 won't finished
+        if (tsk2.IsCompleted) tsk2.Dispose();//Exception if tsk2 won't finished
         Console.WriteLine("Main thread ending.");
-
+        
        Console.Read();
 
     }

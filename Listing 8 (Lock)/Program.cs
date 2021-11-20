@@ -12,7 +12,7 @@ class SumArray
 
     public int SumIt(int[] nums)
     {
-        lock (lockOn) // lock the entire method  - блокировка метода 
+       lock (lockOn) // lock the entire method  - блокировка метода 
         {
             sum = 0; // reset sum  
 

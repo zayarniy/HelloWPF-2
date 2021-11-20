@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 
-
+ 
 namespace XMLSerializer_List
 {
     //Помечаются методы или классы, которые не рекомендуется использовать (false - будет ли ошибка при использовании этого атрибута)

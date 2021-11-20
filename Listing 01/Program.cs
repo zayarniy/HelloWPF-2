@@ -28,6 +28,7 @@ class DemoTask
         Console.WriteLine("Main thread starting.");
 
         // Construct a task. 
+
         
         //Создаем задачу
         Task tsk = new Task(MyTask);//MyTask - точка входа в исполнение потока

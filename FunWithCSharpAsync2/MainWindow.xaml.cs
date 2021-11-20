@@ -51,7 +51,7 @@ namespace FunWithCSharpAsync2
         private async void btnButton_Click2(object sender, RoutedEventArgs e)
         {
             tbText.Text = "Method 2 was started";
-            await MethodReturningVoidAsync();
+            await MethodReturningVoidAsync(400000000);
             tbText.Text = "Method 2 done!";//Сработает, так как обращение к элементам происходят в том же потоке
             //MessageBox.Show("Done!");
         }
@@ -77,5 +77,25 @@ namespace FunWithCSharpAsync2
             );
         }
         #endregion
+
+        //Метод, который выполняет какую-либо работу
+        private async Task MethodReturningVoidAsync(int N)
+        {
+            await Task.Run(() =>
+            {                
+                for (int i = 0; i < N; i++)
+                {
+                    if (i % 10000000 == 0)
+                    {
+                        Console.WriteLine(i);//Do work
+                        //tbText.Text = i.ToString();//Не сработает! 
+                        this.Dispatcher.Invoke(() => tbText.Text = i.ToString());//Нужно обращаться через диспетчер потоков
+
+                    }
+                };
+            }
+            );
+        }
+
     }
 }
