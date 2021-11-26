@@ -10,8 +10,10 @@ class DemoTask
     // A method to be run as a task. 
     static void MyTask()
     {
-        Console.WriteLine("MyTask() starting");
+        Thread.CurrentThread.IsBackground = false;//Фоновая или приоритетная
 
+        Console.WriteLine("MyTask() starting");
+        Console.WriteLine("IsBackground:"+ Thread.CurrentThread.IsBackground);
         //Выполняет работу в потоке
         for (int count = 0; count < 10; count++)
         {
@@ -32,7 +34,7 @@ class DemoTask
         
         //Создаем задачу
         Task tsk = new Task(MyTask);//MyTask - точка входа в исполнение потока
-
+        
         // Run the task. 
         tsk.Start();//запускаем задачу в отдельном потоке
         
@@ -41,12 +43,12 @@ class DemoTask
         for (int i = 0; i < 60; i++)
         {
             Console.Write(".");
-            Thread.Sleep(100);
+            Thread.Sleep(10);
         }
 
         Console.WriteLine("Main thread ending.");
 
-        Console.Read();
+       // Console.Read();
 
     }
 }

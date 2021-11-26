@@ -39,6 +39,12 @@ class DemoParallelFor
         sw.Stop();
         Console.WriteLine("Without Paralle For. Elapsed time:"+sw.ElapsedMilliseconds);
         sw.Restart();
+        // Initialize the data using Paralle For        
+
+        Parallel.For(0, data.Length, (i) => data[i] = i);
+        sw.Stop();
+        Console.WriteLine("Init with Paralle For. Elapsed time:" + sw.ElapsedMilliseconds);
+        sw.Restart();
         // A parallel For loop. 
         Parallel.For(0, data.Length, MyTransform);
         sw.Stop();

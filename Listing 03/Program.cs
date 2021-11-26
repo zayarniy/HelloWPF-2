@@ -1,7 +1,7 @@
 ﻿// Demonstrate the Id and CurrentId properties. 
 //В отличии от потоков у задач используются ID.
-//Система управления сама присваивает номера каждому потоку
-
+//Система управления сама присваивает номера каждей задаче
+//Но мы можем задать потоку имя
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,9 +9,11 @@ using System.Threading.Tasks;
 class DemoTask
 {
 
+    
     // A method to be run as a task. 
     static void MyTask()
     {
+    
         Console.WriteLine("MyTask() #" + Task.CurrentId + " starting");
         Console.WriteLine("Thread ID:{0}", Thread.CurrentThread.ManagedThreadId);
         for (int count = 0; count < 10; count++)

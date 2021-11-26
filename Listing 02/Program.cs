@@ -8,10 +8,13 @@ using System.Threading.Tasks;
 class MyClass
 {
 
+    public string Name = "Noname";
+
     // A method to be run as a task. 
     public void MyTask()
     {
-        Console.WriteLine("MyTask() starting");
+        System.Threading.Thread.CurrentThread.Name = Name;
+        Console.WriteLine($"MyTask({Name}) starting");
 
         for (int count = 0; count < 10; count++)
         {
@@ -30,9 +33,9 @@ class DemoTask
     {
 
         Console.WriteLine("Main thread starting.");
-         
+
         // Construct a MyClass object. 
-        MyClass mc = new MyClass();
+        MyClass mc = new MyClass() { Name = "Task1" };
 
         // Construct a task on mc.MyTask(). 
         Task tsk = new Task(mc.MyTask);

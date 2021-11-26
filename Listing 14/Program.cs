@@ -11,6 +11,7 @@
 Нет гарантированного порядка, например FIFO или ЛИФО, в котором заблокированные потоки вводят семафор.
 */
 using System;
+using System.Diagnostics;
 using System.Threading;
 
 // This thread allows only two instances of itself 
@@ -22,7 +23,7 @@ class MyThread
     // This creates a semaphore that allows up to 2 
     // permits to be granted and that initially has 
     // two permits available. 
-    static Semaphore sem = new Semaphore(2, 2);
+    static Semaphore sem = new Semaphore(2, 3);
     /*Его конструктор принимает два параметра: первый указывает, какому числу объектов изначально будет доступен семафор, 
      * а второй параметр указывает, какой максимальное число объектов будет использовать данный семафор.
      * В данном случае у нас только два объекта могут одновременно находиться в библиотеке, 
@@ -66,7 +67,8 @@ class SemaphoreDemo
 {
     static void Main()
     {
-
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
         // Construct five threads.  
         // Создаем пять потоков
         const int N = 10;
@@ -77,6 +79,8 @@ class SemaphoreDemo
         foreach(MyThread thread in threads)
           thread.Thrd.Join();
         Console.WriteLine("Main thread ending");
+        stopwatch.Stop();
+        Console.WriteLine(stopwatch.ElapsedMilliseconds);
         Console.Read();
 
     }

@@ -44,6 +44,7 @@ namespace Good_Numbers
 
         static void Main(string[] args)
         {
+            Console.WriteLine("*Написать программу подсчета количества «Хороших» чисел в диапазоне от 1 до 1 000 000 000. Хорошим называется число, которое делится на сумму своих цифр. Реализовать подсчет времени выполнения программы, используя структуру DateTime.");
             DateTime start=DateTime.Now;
             int k = GoodNumberCounter(1, 1000000000);
             Console.WriteLine(k);
