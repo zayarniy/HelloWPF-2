@@ -24,26 +24,33 @@ class Factorial
         }
     }
 
+    class Sum
+    {
+        public static ulong Result { get; set; } = 0;
+        public static void S(object n)
+        {
+            Result = 0;
+            for (ulong i = 1; i <= ((ulong)n); i++) Result += i;            
+        }
+
+    }
+
     class Program
     {
 
-
-        static ulong S(ulong n)
-        {
-            ulong s = 0;
-            for (ulong i = 1; i <= n; i++) s += i;
-            return s;
-        }
 
 
         static void Main(string[] args)
         {
             Factorial factorial = new Factorial();
             Thread thread = new Thread(new ParameterizedThreadStart(factorial.F));
+            Thread thread2 = new Thread(new ParameterizedThreadStart(Sum.S));
             thread.Start(5UL);
+            thread2.Start(10UL);
             thread.Join();
-            Console.WriteLine(factorial.Result);
-            //Console.WriteLine(S(3));
+            thread2.Join();
+            Console.WriteLine($"F={factorial.Result}");
+            Console.WriteLine($"Sum={Sum.Result}");            
             Console.ReadKey();
         }
     }

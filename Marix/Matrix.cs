@@ -14,20 +14,12 @@ namespace Marix
     {
         int[,] a;
         static Random rand = new Random();
-        string name;
-
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-        }
+        public string Name { get; }
 
         public Matrix(int n = 5, int m = 5, MatrixFill fill = MatrixFill.None, string name = "", int value = 0,int minRandom = 0, int maxRandom = 10)
         {
             a = new int[n, m];
-            this.name = name;
+            this.Name = name;
             if (fill == MatrixFill.None) return;
             if (fill == MatrixFill.Random)
             {
@@ -54,6 +46,7 @@ namespace Marix
         }
 
 
+        //без использования TPL
         public Matrix Multiply(Matrix other)
         {
             Matrix result = new Matrix(this.N, other.M, MatrixFill.None,name:"Result");
@@ -163,6 +156,33 @@ namespace Marix
                 Console.WriteLine();
             }
         }
+        public static bool operator ==(Matrix left, Matrix right)
+        {
+            if (left.N != right.N || left.M != right.M) throw new ArgumentException("Сравниваться должны равноразмерные матрицы.");
+
+            for (int line = 0; line < left.N; line++)  // проход по строкам результирующей матрицы
+            {
+                for (int column = 0; column < left.M; column++)  // проход по столбцам результирующей матрицы
+                {
+                    if (left[line, column] != right[line, column]) return false;
+                }
+            }
+            return true;
+        }
+
+        public static bool operator !=(Matrix left, Matrix right)
+        {
+            if (left.N != right.N || left.M != right.M) throw new ArgumentException("Сравниваться должны равноразмерные матрицы.");
+
+            for (int line = 0; line < left.N; line++)  // проход по строкам результирующей матрицы
+            {
+                for (int column = 0; column < left.M; column++)  // проход по столбцам результирующей матрицы
+                {
+                    if (left[line, column] != right[line, column]) return true;
+                }
+            }
+            return false;
+        }
 
     }
 
@@ -170,12 +190,13 @@ namespace Marix
     {
         static void Main(string[] args)
         {
-            int N = 300;//500
-            int M = 300;
+            int N = 500;
+            int M = 500;
             int Count = 1;
 
             Matrix A=new Matrix(name:"Matrix A",fill:MatrixFill.Value,value:2,n:N,m:M),
                    B=new Matrix(name:"Matrix B",fill:MatrixFill.Random,n:N,m:M);
+          
             //A.Print();
             //B.Print();
             Console.WriteLine("Start simple multiply");
@@ -196,7 +217,7 @@ namespace Marix
             for (int i = 0; i < Count; i++)
             {
                 Task<Matrix> task = A.MultiplyAsync(B);//Мы все равно здесь дожидаемся результата, поэтому выигрыша в скорости здесь не будет. Но здесь показано в целях демонстрации возможностей использования асинхронности
-                //Console.WriteLine(task.Result); 
+                Console.WriteLine(task.Result); 
             }
             stopwatch.Stop();
             Console.WriteLine("Async result:{0}", stopwatch.ElapsedMilliseconds);
