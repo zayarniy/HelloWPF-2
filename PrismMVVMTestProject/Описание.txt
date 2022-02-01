@@ -1,0 +1,6 @@
+﻿<!--
+    Пример открытия нового окна в MVVM с использованием библиотеки Prism
+    Пример взят отсюда
+https://www.c-sharpcorner.com/article/how-to-open-a-child-window-from-view-model-in-mvvm-in-wpf2/
+
+-->
