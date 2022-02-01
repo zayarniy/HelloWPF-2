@@ -8,8 +8,8 @@
         Title="MainWindow" Height="450" Width="800">
     <Menu>
         <MenuItem Header="_File">
-            <MenuItem Header="_New..."/>
-            <MenuItem Header="_Open..."/>
+            <MenuItem Header="_New..." Click="MenuItem_OnClick"/>
+            <MenuItem Header="_Open..." Click="MenuItem_OnClick"/>
             <Separator/>
             <MenuItem Header="Sen_d To">
                 <MenuItem Header="Mail Recipient"/>

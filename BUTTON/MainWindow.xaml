@@ -22,7 +22,7 @@
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="-123.186"/>
+                    <RotateTransform Angle="-64.354"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Button.RenderTransform>

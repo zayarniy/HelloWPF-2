@@ -6,6 +6,11 @@ namespace GetPrivateField
     class MyClass
     {
         private int a=5;
+
+        public void Print()
+        {
+            Console.WriteLine(a);
+        }
     }
     class Program
     {
@@ -13,8 +18,11 @@ namespace GetPrivateField
         {
             Type type = typeof(MyClass);
             MyClass my = new MyClass();
-            var fi=type.GetField("a",System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            System.Reflection.FieldInfo fi =type.GetField("a",System.Reflection.BindingFlags.Instance |
+                                                          System.Reflection.BindingFlags.NonPublic);
             Console.WriteLine(fi.GetValue(my));
+            fi.SetValue(my, 10);
+            my.Print();
             Console.ReadKey();
         }
     }

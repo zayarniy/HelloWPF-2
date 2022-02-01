@@ -12,7 +12,7 @@
         <Button IsCancel="True">Cancel</Button>
         <Button IsDefault="True" Name="btnOK" Click="btnOK_Click">OK</Button>
         <RepeatButton x:Name="rbtnRepeat" Interval="1000" Delay="2000" Click="rbtnRepeat_Click">Repeat button</RepeatButton>
-         <ToggleButton Name="tbtnToggleButton" Click="tbtnToggleButton_Click">Toggle Button</ToggleButton>
+            <ToggleButton Name="tbtnToggleButton" Click="tbtnToggleButton_Click"></ToggleButton>
     </StackPanel>
             <Button x:Name="btnOtherButton" DockPanel.Dock="Bottom" Height="40" Click="btnOtherButton_Click">Generate OK Click button</Button>
     </DockPanel>

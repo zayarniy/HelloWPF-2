@@ -15,6 +15,7 @@
         <RadioButton>Option 2</RadioButton>
         <RadioButton>Option 3</RadioButton>
         <Line Stroke="Black" StrokeThickness="30" Visibility="Visible"></Line>
+        <Rectangle Fill="Black" Height="2"></Rectangle>
         <RadioButton GroupName="A">Option 11</RadioButton>
         <RadioButton GroupName="A">Option 12</RadioButton>
         <RadioButton GroupName="A">Option 13</RadioButton>

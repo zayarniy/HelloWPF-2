@@ -23,6 +23,8 @@ namespace LISTVIEW
         public MainWindow()
         {
             InitializeComponent();
+            DateTime d;
+          
         }
     }
 }

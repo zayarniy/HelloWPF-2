@@ -190,15 +190,22 @@ namespace Marix
     {
         static void Main(string[] args)
         {
-            int N = 500;
-            int M = 500;
+            int N = 200;
+            int M = 200;
             int Count = 1;
 
             Matrix A=new Matrix(name:"Matrix A",fill:MatrixFill.Value,value:2,n:N,m:M),
-                   B=new Matrix(name:"Matrix B",fill:MatrixFill.Random,n:N,m:M);
+                   B=new Matrix(name:"Matrix B",fill:MatrixFill.Value,value:3,n:N,m:M);
           
             //A.Print();
             //B.Print();
+            Matrix C1 = A.Multiply(B);
+            //C1.Print();
+            Matrix C2 = A.MultiplyOverThread(B);
+            //C2.Print();
+            Matrix C3 = A.MultiplyOverThread2(B);
+            //C3.Print();
+            Console.WriteLine($"C1==C2==C3:{C1 == C2 && C2==C3}");
             Console.WriteLine("Start simple multiply");
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();

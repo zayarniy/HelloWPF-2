@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Mailer"
         xmlns:viewmodel="clr-namespace:Mailer.ViewModel"
-        xmlns:TabSwitcherControl="clr-namespace:TabSwitcher1;assembly=TabSwitcher1"      
         xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:sys1="clr-namespace:System;assembly=mscorlib"
+        xmlns:tabSwitcher1="clr-namespace:TabSwitcher1;assembly=TabSwitcher1"
         mc:Ignorable="d"
         Title="Рассыльщик" Height="500" Width="800" MaxHeight="500" MaxWidth="800" MinHeight="500" MinWidth="800" Icon="/Images/mailreminder.png">
     <Window.DataContext>
@@ -228,14 +228,14 @@
                 <Label x:Name="lbStatus"/>
                 <Label x:Name="lbTick" Content="{Binding TickCount}"/>
             </StatusBar>
-            <TabSwitcherControl:TabSwitcherControl
+            <tabSwitcher1:TabSwitcherControl
                     x:Name="tscTabSwitcherControl" Grid.Column="1">
                 <b:Interaction.Triggers>
                     <b:EventTrigger EventName="btnPreviousClick">
                         <b:InvokeCommandAction Command="{Binding Path=TabSwitcherPrev}"/>
                     </b:EventTrigger>
                 </b:Interaction.Triggers>
-            </TabSwitcherControl:TabSwitcherControl>
+            </tabSwitcher1:TabSwitcherControl>
         </Grid>
     </Grid>
 </Window>

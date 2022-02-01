@@ -24,5 +24,17 @@ namespace MENU
         {
             InitializeComponent();
         }
+
+        private void MenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            switch (((MenuItem)sender).Header.ToString())
+            {
+                case "New":
+                break;
+                case "Open":
+                    break;
+
+            }
+        }
     }
 }

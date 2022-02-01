@@ -6,21 +6,27 @@
         xmlns:local="clr-namespace:STATUSBAR"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-        <StatusBar RenderOptions.BitmapScalingMode="Unspecified">
-            <Label>27 Items</Label>
+    <DockPanel>
+        <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Height="30" RenderOptions.BitmapScalingMode="HighQuality">
+            <StatusBarItem>
+                <Label>27 Items</Label>
+            </StatusBarItem>
             <Separator/>
-            <Label>Zoom</Label>
-            <ComboBox SelectedIndex="0">
-                <ComboBoxItem>100%</ComboBoxItem>
-                <ComboBoxItem>75%</ComboBoxItem>
-                <ComboBoxItem>50%</ComboBoxItem>
-                <ComboBoxItem>25%</ComboBoxItem>
-            </ComboBox>
+            <StatusBarItem>
+                <StackPanel Orientation="Horizontal">
+                <Label>Zoom</Label>
+                <ComboBox SelectedIndex="0">
+                    <ComboBoxItem>100%</ComboBoxItem>
+                    <ComboBoxItem>75%</ComboBoxItem>
+                    <ComboBoxItem>50%</ComboBoxItem>
+                    <ComboBoxItem>25%</ComboBoxItem>
+                </ComboBox>
+                </StackPanel>
+            </StatusBarItem>
             <Separator/>
             <Button>
                 <Image Source="justify.gif"/>
             </Button>
         </StatusBar>
-    </Canvas>
+    </DockPanel>
 </Window>
