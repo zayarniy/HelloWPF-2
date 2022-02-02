@@ -9,11 +9,11 @@
         mc:Ignorable="d"
         Title="Accounter" Height="160" Width="300">
     <Window.DataContext>
-        <viewmodel:ViewModel/>
+        <viewmodel:ViewModel x:Name="ViewModel"/>
     </Window.DataContext>
     <StackPanel>
         <TextBlock>Логин</TextBlock>
-        <TextBox Name="tbLogin" Text="{Binding Path=Account.Login, UpdateSourceTrigger=PropertyChanged,Mode=OneWayToSource}"/>
+        <TextBox Name="tbLogin" Text="{Binding  Path=Account.Login, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
         <TextBlock>Пароль</TextBlock>
         <!--Пример срабатывания событийного тригера на изменение текста-->
         <TextBox Name="tbPassword" Text="{Binding Path=Account.Password,UpdateSourceTrigger=PropertyChanged,Mode=OneWayToSource}">
@@ -26,7 +26,7 @@
         </TextBox>
         <Button x:Name="btnAccess" Command="{Binding ClickAccess}" >Ввести</Button>
         <TextBlock x:Name="tbAccess" Text="{Binding Path=Access}" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-        <TextBlock x:Name="tbAttemptCount" Text="{Binding Path=AttemptCount,StringFormat=Попытка {0}}" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock x:Name="tbAttemptCount" Text="{Binding AttemptCount,StringFormat=Попытка {0}}" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Center">
         </TextBlock>
     </StackPanel>
 </Window>

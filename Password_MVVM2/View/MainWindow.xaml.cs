@@ -21,11 +21,13 @@ namespace Password_MVVM
     /// </summary>
     public partial class MainWindow : Window
     {
-        public bool Access { get; set; }
+        //public bool Access { get; set; }
+        //private Password_MVVM.ViewModel.ViewModel viewModel = new ViewModel.ViewModel();
 
         public MainWindow()
         {
             InitializeComponent();
+           // this.DataContext = viewModel;
         }
 
 

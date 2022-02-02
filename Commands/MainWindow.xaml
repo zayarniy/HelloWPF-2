@@ -12,7 +12,7 @@
     <!-- Назначение командам быстрых клавиш-->
     <!-- Задача - перетащить команды в отдельный класс -->
     <Window.InputBindings>
-        <KeyBinding Command="HelpMe" Key="F2"/>
+        <KeyBinding Command="Help" Key="F2"/>
         <!--заглушка-->
         <KeyBinding Command="NotACommand" Key="F1"/>
     </Window.InputBindings>
@@ -25,7 +25,7 @@
             <ListBoxItem>Основы работы</ListBoxItem>
         </ListBox>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button MinWidth="75" Margin="10" Command="HelpMe" Content="{Binding RelativeSource={RelativeSource Self}, Path=Command.Text}" ToolTip="Press F2"/>
+            <Button MinWidth="75" Margin="10" Command="Help" Content="{Binding RelativeSource={RelativeSource Self}, Path=Command.Text}" ToolTip="Press F2"/>
             <Button MinWidth="75" Margin="10">0K</Button>
         </StackPanel>
         <StatusBar>Moscow, 2020</StatusBar>
