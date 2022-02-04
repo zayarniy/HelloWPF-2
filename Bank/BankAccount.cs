@@ -20,7 +20,7 @@ namespace BankAccountNS
             m_balance = balance;
         }
 
-        //Возвращаем имся покупателя
+        //Возвращаем имя покупателя
         public string CustomerName
         {
             get { return m_customerName; }

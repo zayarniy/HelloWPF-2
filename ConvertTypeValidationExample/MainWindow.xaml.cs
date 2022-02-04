@@ -65,6 +65,7 @@ namespace ConvertTypeValidationExample
         {
             if (e.Action == ValidationErrorEventAction.Added)
             {
+
                 Console.WriteLine(sender);
                 ((Control)sender).ToolTip = e.Error.ErrorContent.ToString();
             }//если ValidationErrorEventAction.Removed

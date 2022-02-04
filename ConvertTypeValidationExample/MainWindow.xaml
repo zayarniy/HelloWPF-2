@@ -29,18 +29,33 @@
             <TextBlock>Name(IDataError)</TextBlock>
             <TextBox>
                 <TextBox.Text>
+                    <!--
+                    
+                   ValidatesOnDataErrors используется в толстых клиентах,
+                    или другими словами, когда валидация предподчтительна на стороне клиента, например в WPF или WinForm приложениях, в которых реализованы IDataErrorInfo                    
+                    
+                    ValidatesOnNotifyDataErrors может быть лучше, для тонких клиентов   (много-уровневые приложения) такие как клиент-серверные приложения (Silverlight, WPF with WCF, etc ..) 
+                    где валидация происходит на сервере
+                    -->
                     <!--NotifyOnValidationError - Возвращает или задает значение, указывающее, следует ли вызывать подключенное к Error событие в привязанном объекте.  -->
                     <!--NotifyOnValidationError - Сработает, если только ValidatesOnDataErros=True.  -->
-                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
+                    <!--ValidatesOnDataErrors - Получает или задает значение, указывающее, включать ли объект DataErrorValidationRule.-->
+                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" NotifyOnValidationError="False" ValidatesOnDataErrors="True">
                     </Binding>
                 </TextBox.Text>
             </TextBox>
         </DockPanel>
         <!--Пример различных способов обработки ошибок -->
         <DockPanel>
-            <TextBlock>Field0 - проверка по умолчанию</TextBlock>
+            <TextBlock>Field0 - проверка по умолчанию</TextBlock><!--Даже если отключены все проверки, но произайдет ошибка, то будет выдано предупреждение, так как реализован интерфейс-->
             <TextBox Text="{Binding Path=Field0,  UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnExceptions=False, NotifyOnValidationError=False, ValidatesOnNotifyDataErrors=False}"/>
         </DockPanel>
+        <DockPanel>
+            <TextBlock  DataContext="{Binding Man1,ElementName=wndMain}">Field0 - проверка по умолчанию в Man1</TextBlock>
+            <!--В Man1 не реализованы интерфейс проверки ошибок, ощибки не будут перехватываться-->
+            <TextBox Text="{Binding Path=Field0,  UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnExceptions=False, NotifyOnValidationError=False, ValidatesOnNotifyDataErrors=False}"/>
+        </DockPanel>
+        <!--*****   ValidatesOnExceptions - Получает или задает значение, указывающее, включать ли объект ExceptionValidationRule ******-->
         <DockPanel>
             <TextBlock>StringField - включили проверку</TextBlock>
             <TextBox Text="{Binding StringField,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, ValidatesOnExceptions=True}" Validation.ErrorTemplate="{StaticResource TextBoxErrorTemplate}"/>
@@ -49,7 +64,9 @@
             <TextBlock>StringField - отключили проверку</TextBlock>
             <TextBox Text="{Binding StringField,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, ValidatesOnExceptions=False}"/>
         </DockPanel>
+        <!--*************************************************-->
         <DockPanel>
+            <!--Если в этом примере NotifyOnValidationError переключить в False, то не будет вызываться подключенное событие и не будет всплывающего окна(смотри код cs)-->
             <TextBlock>Field3 - ошибка конвертации(TextBox_Error)</TextBlock>
             <TextBox Text="{Binding Field3,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, NotifyOnValidationError=True}" 
                       Validation.Error="Field3_Error"/>

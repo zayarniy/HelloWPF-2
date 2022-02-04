@@ -6,7 +6,14 @@
         xmlns:local="clr-namespace:ValidationRuleExample"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <StackPanel>
+        <TextBlock>Email</TextBlock>
+        <TextBox HorizontalAlignment="Left"  TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="229">
+            <Binding>
+                <Binding.ValidationRules></Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+
+
+    </StackPanel>
 </Window>

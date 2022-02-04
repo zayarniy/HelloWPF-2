@@ -18,6 +18,8 @@ namespace ConvertTypeValidationExample
     public class Man : IDataErrorInfo
     {
 
+
+        
         public string Name { get; set; } = "Длина больше 2, но меньше 10";
 
         public int age1;
@@ -72,5 +74,10 @@ namespace ConvertTypeValidationExample
         }
 
         public string Error { get; private set; }// => throw new NotImplementedException();
+    }
+
+    public class Man2
+    {
+        public int Field0 { get; set; }
     }
 }
