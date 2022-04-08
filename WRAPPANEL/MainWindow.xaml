@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WRAPPANEL"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <WrapPanel FlowDirection="LeftToRight" Orientation="Vertical">
+        Title="MainWindow" Height="344" Width="226">
+    <WrapPanel FlowDirection="RightToLeft" Orientation="Horizontal">
         <Button Width="100" Content="Button"/>
         <Button Width="100" Content="Button"/>
         <Button Width="100" Content="Button"/>

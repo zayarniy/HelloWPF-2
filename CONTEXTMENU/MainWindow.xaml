@@ -25,7 +25,7 @@
             <Button>
                 <Button.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="_File">
+                        <MenuItem Header="_File3">
                             <MenuItem Header="_New..."/>
                             <MenuItem Header="_Open..."/>
                             <Separator/>

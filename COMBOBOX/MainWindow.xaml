@@ -17,7 +17,7 @@
             </ComboBoxItem>
 
                 <ComboBoxItem Content="Item2" IsSelected="True"/>
-            <ComboBoxItem Content="Item3"/>
+            <ComboBoxItem Content="Item3" IsSelected="True"/>
             <ComboBoxItem Content="Item4"/>
             
         </ComboBox>

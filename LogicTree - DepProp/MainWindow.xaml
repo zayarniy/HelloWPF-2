@@ -15,9 +15,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LogicTree"
         mc:Ignorable="d"
-        Title="LogicTree" Height="450" Width="800" Background="LightGreen" Foreground="White" SizeToContent="WidthAndHeight" FontSize="40" FontStyle="Italic">
+        Title="LogicTree" Height="450" Width="800" Background="LightGreen" Foreground="White" SizeToContent="WidthAndHeight" FontSize="20" FontStyle="Italic">
     <StackPanel>
-        <Label FontWeight="Bold" FontSize="40" Foreground="White">C#. Level 3</Label>
+        <Label FontWeight="Bold" Foreground="White">C#. Level 3</Label>
         <Label>GeekBrains</Label>
         <Label>C#. Level 3. Titles</Label>
         <ListBox>

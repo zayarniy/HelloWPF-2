@@ -8,9 +8,9 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid ShowGridLines="True">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10*"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -20,6 +20,10 @@
             <MenuItem Header="Файл">
                 <MenuItem Header="New"/>
             </MenuItem>
+            <MenuItem Header="Помощь"/>
+            <MenuItem Header="Помощь"/>
+            <MenuItem Header="Помощь"/>
+            <MenuItem Header="Помощь"/>
             <MenuItem Header="Помощь"/>
         </Menu>
     </Grid>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:STACKPANEL"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
         <Button Content="Button"/>
         <Button Width="100" Content="Button"/>
         <Button Width="100" Content="Button"/>

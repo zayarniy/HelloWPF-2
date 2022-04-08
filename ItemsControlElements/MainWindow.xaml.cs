@@ -23,8 +23,11 @@ namespace ItemsControlElements
         public MainWindow()
         {
             InitializeComponent();
+            List<int> list = new List<int>();
             for (int i = 0; i < 10000; i++)
-                lbList.Items.Add(i.ToString());
+                list.Add(i); 
+
+            lbList.ItemsSource = list;
             //Добавление WrapPanel с ListBox с помощью процедурного языка
             //FrameworkElementFactory panelFactory = new FrameworkElementFactory(typeof(WrapPanel)); myListBox.ItemsPanel = new ItemsPanelTemplate(panelFactory)
         }

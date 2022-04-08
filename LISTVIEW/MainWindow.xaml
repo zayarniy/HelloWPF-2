@@ -20,9 +20,9 @@
                     <GridViewColumn Header="Year" Width="auto" DisplayMemberBinding="{Binding Path=DayOfYear}"/>
                 </GridView>
             </ListView.View>
-            <sys:DateTime>1/1/2012</sys:DateTime>
-            <sys:DateTime>1/2/2012</sys:DateTime>
-            <sys:DateTime>10/3/2012</sys:DateTime>
+            <sys:DateTime>4/8/2021</sys:DateTime>
+            <sys:DateTime>4/8/2020</sys:DateTime>
+            <sys:DateTime>4/8/2023</sys:DateTime>
         </ListView>
     </Grid>
 </Window>

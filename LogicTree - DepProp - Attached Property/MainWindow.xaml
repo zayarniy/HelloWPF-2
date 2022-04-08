@@ -15,8 +15,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LogicTree"
         mc:Ignorable="d"
-        Title="LogicTree" FontSize="20" FontStyle="Italic"  Height="335.818" Width="800" Background="LightGreen" Foreground="White" SizeToContent="WidthAndHeight">
-    <StackPanel>
+        Title="LogicTree" FontSize="10" FontStyle="Italic"  Height="335.818" Width="800" Background="LightGreen" Foreground="White" SizeToContent="WidthAndHeight">
+    <StackPanel TextElement.FontSize="30">
         <Label FontWeight="Bold" FontSize="20" Foreground="White">C#.Level 3</Label>
         <Label>GeekBrains</Label>
         <Label>Titles</Label>

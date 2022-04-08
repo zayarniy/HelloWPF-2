@@ -29,7 +29,7 @@
         </ListBox>
         <!-- С помощью свойства ItemsPanel можно изменить способ отображения и выбора элементов -->
         <!-- В коде программы есть код, как это сделать с помощью программирования -->
-        <ListBox DisplayMemberPath="DayOfWeek">
+        <ListBox DisplayMemberPath="Day">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                 <WrapPanel/>
