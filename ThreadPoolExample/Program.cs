@@ -43,7 +43,7 @@ namespace ThreadPoolExample
             Printer p = new Printer();
             WaitCallback workItem = new WaitCallback(PrintTheNumbers);
             WaitCallback workItem2 = new WaitCallback(PrintTheNumbers);               
-            ThreadPool.QueueUserWorkItem(workItem, p);
+            ThreadPool.QueueUserWorkItem(PrintTheNumbers, p);
             ThreadPool.QueueUserWorkItem(workItem2, p);
             ThreadPool.QueueUserWorkItem(workItem2, p);
             ThreadPool.QueueUserWorkItem(workItem, p);
@@ -67,6 +67,8 @@ namespace ThreadPoolExample
 
 Прервать работу потока, который запускается из пула нельзя, как нельзя его идентифицировать.
 
-Пул потоков – это автоматическое средство для задач, которые требуют временных запусков потоков. Если потоки должны быть активны все время существования приложения, лучше воспользоваться функциональностью класса Thread и реализовать взаимодействие между потоками другими средствами 
+Пул потоков – это автоматическое средство для задач, которые требуют временных запусков потоков. 
+Если потоки должны быть активны все время существования приложения, лучше воспользоваться функциональностью класса
+Thread и реализовать взаимодействие между потоками другими средствами 
 https://brainoteka.com/blogs/c-spravochnik/pul-potokov
 */

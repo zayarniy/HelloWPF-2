@@ -28,6 +28,12 @@ namespace TabSwitcher1
         private void TabSwitcherControl_btnPreviousClick(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("Prev click");
+            e.Handled = false;
+        }
+
+        private void Window_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("Window!");
         }
     }
 }

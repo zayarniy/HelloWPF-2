@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
         <TextBlock>Email</TextBlock>
-        <TextBox HorizontalAlignment="Left"  TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="229">
+        <TextBox HorizontalAlignment="Left"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="229">
             <Binding>
                 <Binding.ValidationRules></Binding.ValidationRules>
             </Binding>
