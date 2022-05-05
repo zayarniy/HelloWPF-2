@@ -7,6 +7,11 @@ using ConsoleTests.Data.Entityes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
+/*
+Реализовано создание базы данных "CS3" из кода (CodeFirst) в среде MsSql. Создаётся таблица Группы и Студенты, реализована связь один ко многим, т.е. у одной группы может быть много студентов.
+Создано две миграции.
+Написан запрос на выборку студентов по условию.
+*/
 namespace ConsoleTests
 {
     class Program
