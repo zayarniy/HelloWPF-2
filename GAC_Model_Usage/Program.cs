@@ -22,8 +22,8 @@ namespace GAC_Model_Usage
         
         static void Main(string[] args)
         {
-            A = new Matrix(50, 50);
-            B = new Matrix(50, 50);
+            A = new Matrix(1000, 1000);
+            B = new Matrix(1000, 1000);
             Console.WriteLine("Start");
             A.MultiplyOverThread(B);
             Console.WriteLine("Done");

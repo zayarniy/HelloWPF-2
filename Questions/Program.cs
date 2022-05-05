@@ -32,7 +32,10 @@ namespace Questions
             /// Какое связывание здесь используется (раннее или позднее)?
             /// Почему здесь ошибка?
            //ClassB object1 = new ClassA();
-
+            ClassA classA = new ClassB();
+            ClassB classB = new ClassB();
+            classA = classB;//Раннее или позднее свызывание?
+            classA.Method1();
             #region Можно ли так исправить?
             //ClassB object1 = (new ClassA() as ClassB);
             #endregion
@@ -113,9 +116,9 @@ namespace Questions
         {
             //Какие проблемы с этим кодом
             int i = 1;
-            object obj = i;//inboxing
+            object obj = i;//boxing
             ++i;
-            //Console.WriteLine((short)obj);//unboxing
+            Console.WriteLine((short)obj);//unboxing
             #region Ответ 1
             #endregion
             #region Ответ 2
